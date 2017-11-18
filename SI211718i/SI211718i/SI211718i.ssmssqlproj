@@ -19,47 +19,65 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="alinea_c.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
-          <FullPath>alinea_c.sql</FullPath>
-        </FileNode>
-        <FileNode Name="alinea_d.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
-          <FullPath>alinea_d.sql</FullPath>
-        </FileNode>
-        <FileNode Name="alinea_e.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
-          <FullPath>alinea_e.sql</FullPath>
-        </FileNode>
-        <FileNode Name="alinea_f.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
-          <FullPath>alinea_f.sql</FullPath>
-        </FileNode>
-        <FileNode Name="alinea_g.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
-          <FullPath>alinea_g.sql</FullPath>
-        </FileNode>
-        <FileNode Name="CreateTable.sql">
+        <FileNode Name="alinea_A_CreateTable.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>CreateTable.sql</FullPath>
+          <FullPath>alinea_A_CreateTable.sql</FullPath>
         </FileNode>
-        <FileNode Name="Drop.sql">
+        <FileNode Name="alinea_B_Drop.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>Drop.sql</FullPath>
+          <FullPath>alinea_B_Drop.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_C.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_C.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_D.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_D.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_E.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_E.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_F.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_F.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_G.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_G.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_H_tests.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_H_tests.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_J.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_J.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_O_tests.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_O_tests.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

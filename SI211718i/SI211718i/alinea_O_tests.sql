@@ -1,4 +1,4 @@
-use SoAventura
+USE Glampinho;
 SET NOCOUNT ON 
 begin tran
 GO

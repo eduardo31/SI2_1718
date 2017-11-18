@@ -2,6 +2,12 @@ USE Glampinho;
 
 BEGIN TRANSACTION
 	PRINT('Droping tables...')
+	
+	IF OBJECT_ID('HistoricoExtra') IS NOT NULL
+		DROP TABLE HistoricoExtra
+		
+	IF OBJECT_ID('HistoricoAloj') IS NOT NULL
+		DROP TABLE HistoricoAloj
 
 	IF OBJECT_ID('HospEstAti') IS NOT NULL
 		DROP TABLE HospEstAti
