@@ -13,6 +13,15 @@ GO
 
 USE Glampinho;
 
+IF OBJECT_ID('Email') is null
+	CREATE TABLE Email(
+		nif int, 
+		email varchar(100),
+		texto varchar(1000)
+	)
+
+GO
+
 IF OBJECT_ID('ParqueCampismo') is null
 	CREATE TABLE ParqueCampismo(
 		nome varchar(100) PRIMARY KEY,

@@ -54,6 +54,9 @@ BEGIN TRANSACTION
 	IF OBJECT_ID('ParqueCampismo') IS NOT NULL
 		DROP TABLE ParqueCampismo
 
+	IF OBJECT_ID('Email') IS NOT NULL
+		DROP TABLE Email
+
 	PRINT('Tables droped.')
 COMMIT
 GO
