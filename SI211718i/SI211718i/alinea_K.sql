@@ -54,13 +54,16 @@ begin
 
 
 	Declare curs cursor for select id from HospEst where id = @id
+			
+	for update open curs Fetch next From curs into @id, @mail, @nif
+		while (@@FETCH_STATUS = 0)
+		begin
+
 			select id, mail, nif
 			from dbo.Estada INNER JOIN dbo.Hospede
 			on Estada.nIdentificacao = Hospede.nIdentificacao
 			Where Estada.dataInicio = @datainicio
-	for update open curs Fetch next From curs into @id, @mail, @nif
-		while (@@FETCH_STATUS = 0)
-		begin
+
 			--criar mensagem
 			declare @mensagem varchar(5000)
 			set @mensagem = 'Gostariamos de informar que a sua estada ira começar em' + @periodoTemporal
@@ -78,6 +81,9 @@ end
 commit
 return
 go
+
+
+---Teste--
 
 
 
