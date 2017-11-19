@@ -16,7 +16,7 @@ USE Glampinho;
 IF OBJECT_ID('Email') is null
 	CREATE TABLE Email(
 		nif int, 
-		email varchar(100),
+		email varchar(200),
 		texto varchar(1000)
 	)
 
@@ -202,6 +202,5 @@ IF OBJECT_ID('HistoricoExtra') is null
 		dataInicial date NOT NULL,
 		preco money	NOT NULL,
 		PRIMARY KEY(extra)	
-	)
-
-
+)
+GO
