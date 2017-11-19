@@ -2,6 +2,9 @@ USE Glampinho;
 
 BEGIN TRANSACTION
 	PRINT('Droping tables...')
+
+	IF object_id('Email') is not null
+		DROP TABLE Email
 	
 	IF OBJECT_ID('HistoricoExtra') IS NOT NULL
 		DROP TABLE HistoricoExtra

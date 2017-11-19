@@ -193,6 +193,14 @@ IF OBJECT_ID('HistoricoExtra') is null
 		dataInicial date NOT NULL,
 		preco money	NOT NULL,
 		PRIMARY KEY(extra)	
-	)
+)
+GO
 
+IF OBJECT_ID('Email') is null
+	create table Email(
+	id int identity(1,1) primary key,
+	nif numeric(9),
+	email varchar(200)
+)
+GO
 

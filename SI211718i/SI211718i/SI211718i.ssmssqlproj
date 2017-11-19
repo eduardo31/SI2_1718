@@ -3,10 +3,22 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="DELL:DELL\Eduardo">
+        <ConnectionNode Name="DELL:DESKTOP-0KFS6SE\Tej">
           <Created>2017-11-16T12:51:48.9281093+00:00</Created>
           <Type>SQL</Type>
           <Server>DELL</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="DESKTOP-0KFS6SE:DESKTOP-0KFS6SE\Tej">
+          <Created>2017-11-19T09:46:02.4416716+00:00</Created>
+          <Type>SQL</Type>
+          <Server>DESKTOP-0KFS6SE</Server>
           <UserName />
           <Authentication>Windows Authentication</Authentication>
           <InitialDB />
@@ -20,32 +32,32 @@
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="alinea_A_CreateTable.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_A_CreateTable.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_B_Drop.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_B_Drop.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_C.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_C.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_D.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_D.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_E.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_E.sql</FullPath>
         </FileNode>
@@ -56,22 +68,28 @@
           <FullPath>alinea_F.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_G.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_G.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_H_tests.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_H_tests.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_J.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_J.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_K.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_K.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_O_tests.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>

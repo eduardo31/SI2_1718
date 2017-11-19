@@ -4,7 +4,8 @@ Proceder ao pagamento devido por uma estada, com emissão da respetiva fatura;
 -Aos preços base podem acrescer os preços de extras, os quais podem ser faturados por
 alojamento ou por pessoa. 
 - Qualquer alteração de preços de alojamento e de extras posterior a uma reserva
-ou início de estada não irá alterar o valor a pagar pelos hóspedes. -todas as pessoas têm os mesmos extras
+ou início de estada não irá alterar o valor a pagar pelos hóspedes. 
+-todas as pessoas têm os mesmos extras
 - Cada atividade é paga por participante, tendo estes de estar alojados no parque onde a atividade vai ter lugar.
 -Após o pagamento de uma estada deve ser emitida uma fatura que contém um identificador
 único em cada ano, o nome e NIF do hóspede responsável e a descrição dos alojamentos, extras e
