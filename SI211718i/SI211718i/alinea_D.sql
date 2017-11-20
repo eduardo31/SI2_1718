@@ -22,6 +22,7 @@ BEGIN TRAN
 	INSERT INTO Alojamento(nome, parque, localizacao, descricao, precoBase, nMaxPessoas, tipo)  VALUES (@nome, @parque, 
 	@localizacao, @descricao, @precoBase, @nMaxPessoas, @tipo)
 	
+	
 	COMMIT
 
 --teste	
@@ -66,18 +67,19 @@ BEGIN
 		SET @nMaxPessoas = (SELECT nMaxPessoas FROM Alojamento WHERE nome = @nome)
 	IF @tipo IS NULL
 		SET @tipo = (SELECT tipo FROM Alojamento WHERE nome = @nome)
-
+	
 	UPDATE Alojamento SET localizacao = @localizacao, descricao = @descricao,precoBase = @precoBase,
 	nMaxPessoas = @nMaxPessoas, tipo = @tipo,parque = @parque
 	WHERE nome = @nome 
-
+	
 	COMMIT
 END
+
 
 ----------teste
 
 EXEC UpdateAlojamento @nome = 'Lima', @parque = 'Alto Lima', @localizacao = 'Ponte de Lima', @descricao = 'Rio Lima',
-		@precoBase = 400, @nMaxPessoas = 13 , @tipo = 'Bungalows'
+		@precoBase = 460, @nMaxPessoas = 13 , @tipo = 'Bungalows'
 
 --------------delete alojamento
 GO

@@ -38,8 +38,8 @@
           <FullPath>alinea_A_CreateTable.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_B_Drop.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_B_Drop.sql</FullPath>
         </FileNode>
@@ -56,8 +56,8 @@
           <FullPath>alinea_D.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_E.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-0KFS6SE:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-0KFS6SE</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>alinea_E.sql</FullPath>
         </FileNode>

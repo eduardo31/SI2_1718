@@ -20,12 +20,10 @@ CREATE PROC InsertAtividade
 AS
 SET xact_abort ON 
 BEGIN TRAN
-	IF NOT EXISTS (SELECT * FROM Atividade WHERE num = @num and ano = @ano)
-			INSERT INTO Atividade(num, ano,parque, nome, descricao, lotacaoMaxima, dataRealizacao, precoParticipante) 
-	VALUES (@num, @ano,@parque, @nome, @descricao, @lotacaoMaxima, @dataRealizacao, @precoParticipante)
-	ELSE raiserror('Atividade já existente!',15,1)
-	COMMIT TRAN
 
+	INSERT INTO Atividade(num, ano,parque, nome, descricao, lotacaoMaxima, dataRealizacao, precoParticipante) 
+	VALUES (@num, @ano,@parque, @nome, @descricao, @lotacaoMaxima, @dataRealizacao, @precoParticipante)
+	COMMIT
 
 -------------TESTE------------
 
@@ -75,7 +73,7 @@ BEGIN
 	dataRealizacao = @dataRealizacao, precoParticipante = @precoParticipante
 		WHERE num = @num and ano = @ano
 
-	COMMIT TRAN
+	COMMIT
 END
 ---------TESTE---------------
 EXEC UpdateAtividade @num = 2, @ano = 2017, @nome = 'Surf',@parque ='Alto Lima',@descricao = 'Ondas Gigantes',@lotacaoMaxima = 4, 
@@ -84,8 +82,8 @@ EXEC UpdateAtividade @num = 2, @ano = 2017, @nome = 'Surf',@parque ='Alto Lima',
 --------DELETE ATIVIDADE
 GO
 
-IF OBJECT_ID('dbo.DeleteExtraPessoal') IS NOT NULL
-	DROP PROCEDURE dbo.DeleteExtraPessoal
+IF OBJECT_ID('DeleteAtividade') IS NOT NULL
+	DROP PROCEDURE DeleteAtividade
 GO
 CREATE PROC DeleteAtividade
 	@num int, @ano int
@@ -93,7 +91,7 @@ CREATE PROC DeleteAtividade
 AS 
 BEGIN TRAN
 	DELETE Atividade WHERE num = @num and ano = @ano
-	COMMIT TRAN
+	COMMIT
 
 --------------TESTE---------------
 

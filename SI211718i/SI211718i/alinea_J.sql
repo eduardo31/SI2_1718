@@ -30,7 +30,7 @@ AS
 SET xact_abort ON 
 BEGIN TRANSACTION
 	
-	DECLARE @descricao varchar(1000), @totaldias int, @datadeinicio date, @datadefim date, @precocurr money, @precototal money, @hospedes int,@nome varchar(100),@nif numeric(9)
+	DECLARE @descricao varchar(5000), @totaldias int, @datadeinicio date, @datadefim date, @precocurr money, @precototal money, @hospedes int,@nome varchar(100),@nif numeric(9)
 	select @datadeinicio = dataInicio FROM Estada WHERE id=@Id_Estada;
 	select @datadefim = dataFim FROM Estada WHERE id=@Id_Estada;
 	select @totaldias = DATEDIFF(day, @datadeinicio, @datadefim);
@@ -43,8 +43,23 @@ BEGIN TRANSACTION
 	for update open curs declare @alojamento varchar(100)fetch next from curs into @alojamento
 	while(@@FETCH_STATUS=0)
 	begin
+		/*check historico alojamento*/
+		select @precocurr = 0
+		declare aux cursor for select preco,dataInicial from HistoricoAloj  WHERE alojamento=@alojamento order by dataInicial ASC
+		for update open aux declare @preco money, @dataInicial date 
+		fetch next from aux into @preco, @dataInicial
+		while(@@FETCH_STATUS=0)
+		begin
+			if(@datadeinicio<=@dataInicial)
+				break;
+			else
+				select @precocurr = @preco
+			fetch next from aux into @preco, @dataInicial
+		end
+		close aux 
+		deallocate aux
 
-		select @precocurr =  (select precoBase from Alojamento where nome=@alojamento) * @totaldias
+		select @precocurr =  /*(select precoBase from Alojamento where nome=@alojamento)*/ @precocurr * @totaldias
 		select @precototal = @precototal + @precocurr
 		select @descricao = @descricao + 'Alojamento' + CHAR(13)+CHAR(10)
 		select @descricao = @descricao + (select descricao from Alojamento where nome=@alojamento) +' '+ @precocurr + CHAR(13)+CHAR(10)
@@ -53,7 +68,26 @@ BEGIN TRANSACTION
 		for update open curex declare @extra int fetch next from curex into @extra
 		while(@@FETCH_STATUS=0)
 		begin
-			select @precocurr =  (select precoDia from Extra where id=@extra) * @totaldias
+
+
+			/*check historico extra*/
+			select @precocurr = 0
+			declare aux cursor for select preco,dataInicial from HistoricoExtra  WHERE extra=@extra order by dataInicial ASC
+			for update open aux declare @prec money, @dataInicia date 
+			fetch next from aux into @prec, @dataInicia
+			while(@@FETCH_STATUS=0)
+			begin
+				if(@datadeinicio<=@dataInicia)
+					break;
+				else
+					select @precocurr = @prec
+				fetch next from aux into @prec, @dataInicia
+			end
+			close aux 
+			deallocate aux
+
+
+			select @precocurr =  @precocurr * @totaldias
 			if ((select tipo from Extra where id=@extra)='ExPessoa')
 				select @precocurr = @precocurr * @hospedes
 			select @precototal = @precototal + @precocurr
@@ -98,4 +132,38 @@ COMMIT
 RETURN 
 
 GO
+
+
+CREATE TRIGGER PriceExtraTrigger
+ON Extra
+AFTER INSERT, UPDATE
+AS
+BEGIN
+IF EXISTS (SELECT * FROM inserted) and EXISTS (SELECT * FROM deleted)
+begin
+	IF((select precoDia from inserted) != (select precoDia from deleted))
+		INSERT INTO HistoricoExtra(extra, dataInicial, preco) VALUES((select id from inserted), GETDATE(), (select precoDia from inserted))
+end
+IF EXISTS (SELECT * FROM inserted) and NOT EXISTS (SELECT * FROM deleted)
+	INSERT INTO HistoricoExtra(extra, dataInicial, preco) VALUES((select id from inserted), GETDATE(), (select precoDia from inserted))
+END
+
+GO
+
+CREATE TRIGGER PriceAlojTrigger
+ON Alojamento 
+AFTER INSERT, UPDATE
+AS
+BEGIN
+IF EXISTS (SELECT * FROM inserted) and EXISTS (SELECT * FROM deleted)
+begin
+	IF((select precoBase from inserted) != (select precoBase from deleted))
+		INSERT INTO HistoricoExtra(extra, dataInicial, preco) VALUES((select nome from inserted), GETDATE(), (select precoBase from inserted))
+end
+IF EXISTS (SELECT * FROM inserted) and NOT EXISTS (SELECT * FROM deleted)
+	INSERT INTO HistoricoExtra(extra, dataInicial, preco) VALUES((select nome from inserted), GETDATE(), (select precoBase from inserted))
+END
+
+print('Teste J')
+
 

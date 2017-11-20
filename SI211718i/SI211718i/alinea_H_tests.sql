@@ -16,7 +16,6 @@ BEGIN TRY
 	---inserir hospede responsavel
 	EXEC InsertHospede @nif = 2992222,@nIdentificacao = '1269007', @morada ='Rua do ISEL', @nome='Francisco Fernandes', @mail='ff@mail.com'
 	
-
 	--insercao na estada
 	 EXEC InsertEstada @id = @idEstada,@dataInicio=@dataInicio,@dataFim=@dataFim,@nIdentificacao = '1269007'
 	 
@@ -32,8 +31,7 @@ BEGIN TRY
 	--inserir um parque
 	EXEC InsertParqueCampismo @nome='Alto Lima',@morada = 'Rua Lima', @estrelas=4, @mail='lima@mail.com'
 	
-
-	--INSERIR UM ALOJAMENTO----
+	---INSERIR UM ALOJAMENTO----
 	EXEC InsertAlojamento @nome = 'Lima', @parque = 'Alto Lima', @localizacao ='Ponte da Barca', @descricao ='Paisagem Linda',
 							@precoBase = 450, @nMaxPessoas = 12, @tipo = 'Bungalows'
 	
@@ -191,5 +189,13 @@ BEGIN TRANSACTION
 COMMIT TRAN
 
 --------TESTE---
-EXEC CreateEstada @idEstada = 3, @dataInicio='2018-08-02',@dataFim = '2018-09-02'
---select * from Estada
+EXEC CreateEstada @idEstada = 3,@dataInicio='2018-08-02',@dataFim = '2018-09-02'
+select * from Estada
+
+
+
+
+
+
+
+
