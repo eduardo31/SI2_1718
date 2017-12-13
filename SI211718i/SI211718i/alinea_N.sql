@@ -41,12 +41,15 @@ as
 	declare @nome varchar(100) 
 	if exists(Select * from inserted)
 	begin
+		declare @nomeAloj varchar(30)
+		declare @nomeCamp varchar(30)
 		declare @localizacao varchar(30)
 		declare @descricao varchar(30)
 		declare @precoBase money
 		declare @nMaxPessoas int
-		select @nome=nomeAloj, @localizacao=localizacao, @descricao = descricao, 
-		@precoBase = precoBase, @nMaxPessoas = nMaxPessoas
+		declare @tipo varchar(10)
+		select @nomeAloj=nomeAloj,@nomeCamp=nomeCamp,@localizacao=localizacao, @descricao=descricao, 
+				@precoBase=precoBase, @nMaxPessoas=nMaxPessoas
 		from inserted
 		update dbo.Alojamento
 		set  
@@ -63,26 +66,32 @@ create trigger insertAlojBungalow
 on BungalowView
 instead of insert
 as
-
-declare @nome varchar(100)
-if not exists(Select nome=@nome from inserted)
+--declare @nome varchar(100)
+--if not exists(Select nome=@nome from inserted)
 begin
+	declare @nomeAloj varchar(30)
+	declare @nomeCamp varchar(30)
 	declare @localizacao varchar(30)
 	declare @descricao varchar(30)
 	declare @precoBase money
 	declare @nMaxPessoas int
 	declare @tipo varchar(10)
-	insert into dbo.Alojamento
-		SELECT nomeAloj, localizacao, descricao, 
-				precoBase, nMaxPessoas
+		SELECT @nomeAloj=nomeAloj,@nomeCamp=nomeCamp,@localizacao=localizacao, @descricao=descricao, 
+				@precoBase=precoBase, @nMaxPessoas=nMaxPessoas
 			FROM inserted
-		update dbo.Alojamento
-		set  
-			@nome = nome,
-			@localizacao=localizacao, 
-			@descricao = descricao, 
-			@precoBase = precoBase, 
-			@nMaxPessoas = nMaxPessoas
-		where nome = @nome
+		insert into dbo.Alojamento values (@nomeAloj, @nomeCamp, @localizacao, @descricao, @precoBase, @nMaxPessoas, 'Bungalows')
 	end
 go
+
+
+--------testes---
+
+SELECT * FROM ParqueCampismo
+INSERT INTO ParqueCampismo VALUES('Lisboa','Rua Lisboeta',5,'lisboa@mail.com')
+SELECT * FROM Alojamento
+INSERT INTO Alojamento VALUES ('Marvila','Lisboa','Lisboa','7 colinas',450,9,'Bungalows')
+INSERT INTO Alojamento VALUES ('Tribo','Lisboa','Lisb','boa vista',250,4,'Tendas')
+select * from BungalowView
+insert into BungalowView VALUES ('Lisboa','Rua Lisboeta', 5,'lisboa@mail.com', 'Alj', 'Lisbo', 'view', 250, 5)
+--update BungalowView set precoBase = 230 where nomeCamp = 'Lisboa', nomeAloj = 'Alj'
+
