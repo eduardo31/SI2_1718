@@ -15,7 +15,7 @@ USE Glampinho;
 
 IF OBJECT_ID('Email') is null
 	CREATE TABLE Email(
-		nif int, 
+		nif int primary key, 
 		email varchar(200),
 		texto varchar(1000)
 	)
