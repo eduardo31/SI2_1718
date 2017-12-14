@@ -20,12 +20,11 @@ CREATE PROC InsertAtividade
 AS
 SET xact_abort ON 
 BEGIN TRAN
-
-	INSERT INTO Atividade(num, ano,parque, nome, descricao, lotacaoMaxima, dataRealizacao, precoParticipante) 
+	IF NOT EXISTS (SELECT * FROM Atividade WHERE num = @num and ano = @ano)
+			INSERT INTO Atividade(num, ano,parque, nome, descricao, lotacaoMaxima, dataRealizacao, precoParticipante) 
 	VALUES (@num, @ano,@parque, @nome, @descricao, @lotacaoMaxima, @dataRealizacao, @precoParticipante)
-	COMMIT
-
-
+	ELSE raiserror('Atividade já existente!',15,1)
+	COMMIT TRAN
 
 ----UPDATE
 GO
@@ -81,4 +80,8 @@ CREATE PROC DeleteAtividade
 AS 
 BEGIN TRAN
 	DELETE Atividade WHERE num = @num and ano = @ano
-	COMMIT
+
+	IF EXISTS (SELECT * FROM HospEstAti WHERE num = @num and ano = @ano)
+		DELETE HospEstAti WHERE num = @num and ano = @ano
+
+	COMMIT TRAN

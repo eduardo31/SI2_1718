@@ -11,8 +11,10 @@ CREATE PROC InsertExtraAloj
 AS
 SET xact_abort ON 
 BEGIN TRAN
-	INSERT INTO ExtraAloj(id,tipo) VALUES (@id, @tipo)
-COMMIT
+	IF NOT EXISTS (SELECT * FROM ExtraAloj WHERE id = @id)
+		INSERT INTO ExtraAloj(id,tipo) VALUES (@id, @tipo)
+	ELSE raiserror('ExtraAloj já existe!',15,1)
+	COMMIT TRAN
 
 ---UPDATE UM EXTRA DO ALOJAMENTO
 GO

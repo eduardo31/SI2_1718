@@ -79,31 +79,3 @@ BEGIN TRAN
 		INSERT INTO HospEstAti (nIdentificacao,num,ano,id) VALUES (@nIdentificacao,@num,@ano,@id)
 	ELSE raiserror('Tuplo introduzido já se encontra na base de dados!',15,1)
 	COMMIT TRAN
-------
-/*
-SELECT * FROM ParqueCampismo
-
-
-delete Atividade where ano=2018
-Select * from Hospede
-insert into Hospede values ('987654',123654987,'Maria Sousa','Rua DEF','mariasousa@mail.com')
-
-Select * from HospEstAti
-insert HospEstAti values (2,2018,1,12352)
-insert HospEstAti values (2,2018,1,1234567)
-insert HospEstAti values (2,2018,1,12345123)
-
-delete HospEstAti where ano=2017
-
-insert into Hospede values ('97887654',122254987,'Joana Sousa','Rua DEF','joanasousa@mail.com')
-insert HospEstAti values (3,2018,1,12352)
-insert HospEstAti values (3,2018,1,1234567)
-insert HospEstAti values (3,2018,1,12345123)
---Select * from Estada
-
-EXEC InscreverUmHospedeNumaAtividade
- @nIdentificacaoHospede='97887654',
-	@numAtividade = 3,
-	@anoAtividade =2018,
-	@idEstada =1
-*/

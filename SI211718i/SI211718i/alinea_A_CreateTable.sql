@@ -81,7 +81,9 @@ IF OBJECT_ID('Hospede') is null
 		nif numeric(9) UNIQUE NOT NULL,
 		nome varchar(100) NOT NULL,	
 		morada varchar(100) NOT NULL,
-		mail varchar(100) UNIQUE NOT NULL
+		mail varchar(100) UNIQUE NOT NULL,
+		exist char,
+		CHECK(exist = 'F' OR exist ='T')
 	)
 
 GO
@@ -91,7 +93,7 @@ IF OBJECT_ID('Estada') is null
 		id int PRIMARY KEY,
 		dataInicio date NOT NULL,
 		dataFim date NOT NULL,
-		nIdentificacao varchar(100)
+		nIdentificacao varchar(100) REFERENCES Hospede
 	)
 
 GO

@@ -18,12 +18,11 @@ CREATE PROC InsertAlojamento
 AS
 SET xact_abort ON 
 BEGIN TRAN
-
-	INSERT INTO Alojamento(nome, parque, localizacao, descricao, precoBase, nMaxPessoas, tipo)  VALUES (@nome, @parque, 
-	@localizacao, @descricao, @precoBase, @nMaxPessoas, @tipo)
-	
-	
-	COMMIT
+	IF NOT EXISTS (SELECT * FROM Alojamento WHERE nome = @nome)
+		INSERT INTO Alojamento(nome, parque, localizacao, descricao, precoBase, nMaxPessoas, tipo)  VALUES 
+		(@nome, @parque,@localizacao, @descricao, @precoBase, @nMaxPessoas, @tipo)
+	ELSE raiserror('Alojamento já existente!',15,1)
+	COMMIT TRAN
 
 -------------------------------------
 ---update Alojamento
@@ -67,9 +66,6 @@ BEGIN
 	
 	COMMIT
 END
-
-
-
 --------------delete alojamento
 GO
 
@@ -81,4 +77,17 @@ CREATE PROC DeleteAlojamento
 AS
 BEGIN TRAN
 	DELETE FROM Alojamento WHERE nome = @nome 
+
+	IF EXISTS (SELECT * FROM Tendas WHERE nomeAlojamento = @nome)
+		DELETE FROM Tendas WHERE nomeAlojamento = @nome
+
+	IF EXISTS (SELECT * FROM Bungalows WHERE nomeAlojamento = @nome)
+		DELETE FROM Bungalows WHERE nomeAlojamento = @nome
+
+	IF EXISTS (SELECT * FROM EstAlojExtra WHERE alojamento = @nome)
+		DELETE FROM EstAlojExtra WHERE alojamento = @nome
+	
+	IF EXISTS (SELECT * FROM HistoricoAloj WHERE alojamento = @nome)
+		DELETE FROM HistoricoAloj WHERE alojamento = @nome
+	
 	COMMIT

@@ -14,9 +14,11 @@ CREATE PROC InsertHospede
 	  @mail varchar(100) = NULL
 AS
 SET xact_abort ON 
-BEGIN TRANSACTION
-	INSERT INTO Hospede(nIdentificacao,nif,nome,morada,mail) VALUES (@nIdentificacao,@nif,@nome,@morada,@mail)
-	COMMIT
+BEGIN TRAN
+	IF NOT EXISTS (SELECT * FROM Hospede WHERE nIdentificacao = @nIdentificacao)
+		INSERT INTO Hospede(nIdentificacao,nif,nome,morada,mail,exist) VALUES (@nIdentificacao,@nif,@nome,@morada,@mail,'T')
+	ELSE raiserror('Hospede já registado!',15,1)
+	COMMIT TRAN
 
 ----update hospede
 GO
@@ -50,7 +52,6 @@ BEGIN
 END
 
 --------DeleteHospede-----
-
 GO
 
 IF OBJECT_ID('dbo.DeleteHospede') IS NOT NULL
@@ -61,7 +62,16 @@ CREATE PROC DeleteHospede
 AS
 SET xact_abort ON
 BEGIN TRAN
-	DELETE FROM Hospede WHERE nIdentificacao = @nIdentificacao
+	UPDATE Hospede SET exist = 'F' WHERE  nIdentificacao = @nIdentificacao
+
+	IF EXISTS (SELECT * FROM HospEst WHERE nIdentificacao = @nIdentificacao)
+		 DELETE FROM HospEst WHERE nIdentificacao = @nIdentificacao 
+	
+	IF EXISTS (SELECT * FROM HospEstAti WHERE nIdentificacao = @nIdentificacao)
+		 DELETE FROM HospEstAti WHERE nIdentificacao = @nIdentificacao 
+
+	IF EXISTS (SELECT * FROM Estada WHERE nIdentificacao = @nIdentificacao)
+		 DELETE FROM HospEstAti WHERE nIdentificacao = @nIdentificacao 
 	COMMIT
 
 
