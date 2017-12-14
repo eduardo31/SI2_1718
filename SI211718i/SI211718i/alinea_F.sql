@@ -17,15 +17,6 @@ BEGIN TRAN
 	ELSE raiserror('ExtraPessoa já existe!',15,1)
 	COMMIT TRAN
 
---------TESTE-----
-
-
-
-INSERT INTO Extra VALUES (4,'Um Pequeno Almoço Extra',8.5,'ExPessoa')
-
-EXEC InsertExtraPessoal @id = 4, @tipo='pa'
-
-
 ---UPDATE UM EXTRA PESSOAL
 GO
 IF OBJECT_ID('dbo.UpdateExtraPessoal') IS NOT NULL
@@ -48,8 +39,6 @@ BEGIN
 	COMMIT TRAN
 
 END
------TESTE---
-EXEC UpdateExtraPessoal @id =4, @tipo='mp'
 
 -----------DELETE UM EXTRA PESSOAL--------------
 GO
@@ -63,9 +52,3 @@ AS
 BEGIN TRAN
 	DELETE FROM ExtraPessoa WHERE id = @id
 	COMMIT TRAN
-
--------TESTE----
-EXEC DeleteExtraPessoal @id=4
-
-SELECT *FROM Extra
-SELECT *FROM ExtraPessoa

@@ -104,7 +104,7 @@ BEGIN
 END
 GO
 -------TESTE----------
-SELECT * FROM ParqueCampismo
+/*SELECT * FROM ParqueCampismo
 INSERT INTO ParqueCampismo VALUES('Lisboa','Rua Lisboeta',5,'lisboa@mail.com')
 SELECT * FROM Alojamento
 INSERT INTO Alojamento VALUES ('Marvila','Lisboa','Lisboa','7 colinas',450,9,'Bungalows')
@@ -142,6 +142,6 @@ SELECT * FROM EstAlojExtra
 
 SELECT * FROM [dbo].[MediadePagamentos](2017,2)
 DECLARE @t int 
-SET @t = [dbo].[MediadePagamentos](2017,2)
+SET @t = [dbo].[MediadePagamentos](2017,2)*/
 
 ---SELECT * FROM  ListarAtividadesDisponiveis ('2018-02-20','2018-04-04')

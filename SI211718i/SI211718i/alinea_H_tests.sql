@@ -29,7 +29,10 @@ BEGIN TRY
 	/*Adicionar um alojamento de um dado tipo com uma determinada lotação a uma estada;*/
 
 	--inserir um parque
-	EXEC InsertParqueCampismo @nome='Alto Lima',@morada = 'Rua Lima', @estrelas=4, @mail='lima@mail.com'
+	if not exists(select * from ParqueCampismo where nome ='Alto Lima')
+		EXEC InsertParqueCampismo @nome='Alto Lima',@morada = 'Rua Lima', @estrelas=4, @mail='lima@mail.com'
+	
+	
 	
 	---INSERIR UM ALOJAMENTO----
 	EXEC InsertAlojamento @nome = 'Lima', @parque = 'Alto Lima', @localizacao ='Ponte da Barca', @descricao ='Paisagem Linda',
@@ -106,7 +109,7 @@ BEGIN TRANSACTION
 	IF NOT EXISTS (SELECT * FROM Estada WHERE id = @id)
 		INSERT INTO Estada(id,dataInicio,dataFim,nIdentificacao) VALUES (@id,@dataInicio,@dataFim,@nIdentificacao)
 	ELSE raiserror('Estada já existente!',15,1)
-	COMMIT TRAN
+	COMMIT 
 
 ---------INSERÇÃO DO HOSPEDE À ESTADA-------
 GO
@@ -125,7 +128,7 @@ BEGIN TRANSACTION
 	IF NOT EXISTS (SELECT * FROM HospEst WHERE id = @id and nIdentificacao= @nIdentificacao)
 		INSERT INTO HospEst(id,nIdentificacao) VALUES (@id,@nIdentificacao)
 	ELSE raiserror('O Hospede já se encontra inserido na Estada!',15,1)
-	COMMIT TRAN
+	COMMIT 
 
 -------------INSERÇÃO AO PARQUE DE CAMPISMO--------
 GO
@@ -146,7 +149,7 @@ BEGIN TRANSACTION
 	IF NOT EXISTS (SELECT * FROM ParqueCampismo WHERE nome = @nome)
 		INSERT INTO ParqueCampismo(nome,morada,estrelas,mail) VALUES (@nome,@morada,@estrelas,@mail)
 	ELSE raiserror('O Parque de Campismo já se encontra inserido!',15,1)
-	COMMIT TRAN
+	COMMIT 
 
 -------------INSERÇÃO AO EXTRA--------
 GO
@@ -167,7 +170,7 @@ BEGIN TRANSACTION
 	IF NOT EXISTS (SELECT * FROM Extra WHERE id = @id)
 			INSERT INTO Extra(id,descricao,precoDia,tipo) VALUES (@id,@descricao,@precoDia,@tipo)
 	ELSE raiserror('Extra já se encontra inserido!',15,1)
-	COMMIT TRAN
+	COMMIT 
 ---------INSERÇÃO ALOJAMENTO ADICIONADO À ESTADA-----------
 GO
 
@@ -186,11 +189,9 @@ BEGIN TRANSACTION
 	IF NOT EXISTS (SELECT * FROM EstAlojExtra WHERE id = @id and alojamento = @alojamento and extra = @extra)
 		INSERT INTO EstAlojExtra(id,alojamento,extra) VALUES (@id,@alojamento,@extra)
 	ELSE raiserror('Tuplo inserido já se encontra na base de dados!',15,1)
-COMMIT TRAN
+COMMIT 
 
---------TESTE---
-EXEC CreateEstada @idEstada = 3,@dataInicio='2018-08-02',@dataFim = '2018-09-02'
-select * from Estada
+
 
 
 

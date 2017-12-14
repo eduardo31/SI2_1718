@@ -23,7 +23,7 @@ BEGIN
 END
 GO
 -----TESTE----
-insert into ParqueCampismo values('Isel','Rua do Isel',5,'isel@mail.com')
+/*insert into ParqueCampismo values('Isel','Rua do Isel',5,'isel@mail.com')
 insert into ParqueCampismo values('ISEP','Rua do ISEP',4,'iseP@mail.com')
 insert into ParqueCampismo values('UM','Rua do ISEP',4,'um@mail.com')
 Select * from Atividade
@@ -50,4 +50,4 @@ select * from HospEstAti
 insert HospEstAti values (6,2018,9,'23232323')
 insert HospEstAti values (6,2018,9,'45454545')
 
-SELECT * FROM  ListarAtividadesDisponiveis ('2018-02-20','2018-04-04')
+SELECT * FROM  ListarAtividadesDisponiveis ('2018-02-20','2018-04-04')*/

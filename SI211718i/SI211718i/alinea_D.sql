@@ -25,13 +25,6 @@ BEGIN TRAN
 	
 	COMMIT
 
---teste	
-	INSERT INTO ParqueCampismo VALUES('Alto Lima', 'Rua Lima', 4, 'lima@mail.com')
-
-
-	EXEC InsertAlojamento @nome = 'Lima', @parque = 'Alto Lima', @localizacao ='Ponte da Barca', @descricao ='Paisagem Linda',
-		@precoBase = 450, @nMaxPessoas = 12, @tipo = 'Tendas'
-
 -------------------------------------
 ---update Alojamento
 GO
@@ -76,10 +69,6 @@ BEGIN
 END
 
 
-----------teste
-
-EXEC UpdateAlojamento @nome = 'Lima', @parque = 'Alto Lima', @localizacao = 'Ponte de Lima', @descricao = 'Rio Lima',
-		@precoBase = 460, @nMaxPessoas = 13 , @tipo = 'Bungalows'
 
 --------------delete alojamento
 GO
@@ -93,8 +82,3 @@ AS
 BEGIN TRAN
 	DELETE FROM Alojamento WHERE nome = @nome 
 	COMMIT
----------TESTE
-EXEC DeleteAlojamento @nome = 'Lima'
-
-SELECT * FROM Alojamento
---SELECT * FROM ParqueCampismo

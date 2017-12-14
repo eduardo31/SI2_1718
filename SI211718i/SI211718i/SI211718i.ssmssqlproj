@@ -103,6 +103,18 @@
           <AssociatedConnUserName />
           <FullPath>alinea_L.sql</FullPath>
         </FileNode>
+        <FileNode Name="alinea_M.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_M.sql</FullPath>
+        </FileNode>
+        <FileNode Name="alinea_N.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>alinea_N.sql</FullPath>
+        </FileNode>
         <FileNode Name="alinea_O_tests.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DELL</AssociatedConnSrvName>

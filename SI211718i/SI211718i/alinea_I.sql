@@ -80,7 +80,7 @@ BEGIN TRAN
 	ELSE raiserror('Tuplo introduzido já se encontra na base de dados!',15,1)
 	COMMIT TRAN
 ------
-
+/*
 SELECT * FROM ParqueCampismo
 
 
@@ -106,3 +106,4 @@ EXEC InscreverUmHospedeNumaAtividade
 	@numAtividade = 3,
 	@anoAtividade =2018,
 	@idEstada =1
+*/

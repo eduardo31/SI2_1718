@@ -12,15 +12,7 @@ AS
 SET xact_abort ON 
 BEGIN TRAN
 	INSERT INTO ExtraAloj(id,tipo) VALUES (@id, @tipo)
-	COMMIT
-
----teste
-INSERT INTO Extra VALUES (2,'Uma Cama Extra',15,'ExAloj')
-INSERT INTO Extra VALUES (3,'Uma Cama Extra',18,'ExAloj')
-INSERT INTO Extra VALUES (5,'Uma Atividade Extra',16.6,'ExAloj')
-
-EXEC InsertExtraAloj @id = 2, @tipo='Pessoa Extra'
-EXEC InsertExtraAloj @id = 3, @tipo='Animal de Companhia'
+COMMIT
 
 ---UPDATE UM EXTRA DO ALOJAMENTO
 GO
@@ -46,8 +38,6 @@ BEGIN
 	COMMIT 
 
 END
----teste
-EXEC UpdateExtraAloj @id =2, @tipo='Animal de Companhia'
 
 -----------DELETE UM EXTRA DO ALOJAMENTO
 GO
@@ -61,9 +51,3 @@ BEGIN TRAN
 	DELETE FROM ExtraAloj WHERE id = @id
 	COMMIT 
 
-------TESTE----
-
-EXEC DeleteExtraAloj @id=2
------
-SELECT *FROM Extra
-SELECT *FROM ExtraAloj

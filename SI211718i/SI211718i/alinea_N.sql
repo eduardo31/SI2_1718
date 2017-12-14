@@ -83,15 +83,14 @@ begin
 	end
 go
 
-
 --------testes---
 
-SELECT * FROM ParqueCampismo
+/*SELECT * FROM ParqueCampismo
 INSERT INTO ParqueCampismo VALUES('Lisboa','Rua Lisboeta',5,'lisboa@mail.com')
 SELECT * FROM Alojamento
 INSERT INTO Alojamento VALUES ('Marvila','Lisboa','Lisboa','7 colinas',450,9,'Bungalows')
 INSERT INTO Alojamento VALUES ('Tribo','Lisboa','Lisb','boa vista',250,4,'Tendas')
 select * from BungalowView
-insert into BungalowView VALUES ('Lisboa','Rua Lisboeta', 5,'lisboa@mail.com', 'Alj', 'Lisbo', 'view', 250, 5)
---update BungalowView set precoBase = 230 where nomeCamp = 'Lisboa', nomeAloj = 'Alj'
+insert into BungalowView VALUES ('Lisboa','Rua Lisboeta', 5,'lisboa@mail.com', 'Alj', 'Lisbo', 'view', 250, 5)*/
 
+--update BungalowView set precoBase = 230 where nomeCamp = 'Lisboa', nomeAloj = 'Alj'

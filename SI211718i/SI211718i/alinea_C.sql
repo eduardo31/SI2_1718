@@ -18,12 +18,6 @@ BEGIN TRANSACTION
 	INSERT INTO Hospede(nIdentificacao,nif,nome,morada,mail) VALUES (@nIdentificacao,@nif,@nome,@morada,@mail)
 	COMMIT
 
-------teste-----
-
-EXEC InsertHospede @nIdentificacao ='12352',@nif = 222, @nome ='Pedro Fonseca' , @morada='Rua ABC', @mail ='pfonseca@mail.com'
-
-
-
 ----update hospede
 GO
 IF OBJECT_ID('dbo.UpdateHospede') IS NOT NULL
@@ -54,10 +48,6 @@ BEGIN
 
 	COMMIT
 END
--------TESTE-------
-	
-	EXEC UpdateHospede @nIdentificacao ='12352',@nif = 222, @nome ='Joao Fonseca' , @morada='Rua DEF', @mail ='pfonseca@mail.com'
-
 
 --------DeleteHospede-----
 
@@ -73,9 +63,6 @@ SET xact_abort ON
 BEGIN TRAN
 	DELETE FROM Hospede WHERE nIdentificacao = @nIdentificacao
 	COMMIT
--------TESTE-------
-EXEC DeleteHospede @nIdentificacao ='12352'
 
---Select * from Hospede 
 
 

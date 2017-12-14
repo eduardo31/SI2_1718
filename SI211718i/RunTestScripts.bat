@@ -12,8 +12,8 @@ sqlcmd -i %cd%\SI211718i\alinea_I.sql
 sqlcmd -i %cd%\SI211718i\alinea_J.sql
 sqlcmd -i %cd%\SI211718i\alinea_k.sql
 sqlcmd -i %cd%\SI211718i\alinea_L.sql
-sqlcmd -i %cd%\SI211718i\alinea_B_Drop.sql
-sqlcmd -i %cd%\SI211718i\alinea_A_CreateTable.sql
+sqlcmd -i %cd%\SI211718i\alinea_M.sql
+sqlcmd -i %cd%\SI211718i\alinea_N.sql
 sqlcmd -i %cd%\SI211718i\alinea_O_tests.sql
 sqlcmd -i %cd%\SI211718i\alinea_B_Drop.sql
 

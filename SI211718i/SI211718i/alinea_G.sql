@@ -25,13 +25,6 @@ BEGIN TRAN
 	VALUES (@num, @ano,@parque, @nome, @descricao, @lotacaoMaxima, @dataRealizacao, @precoParticipante)
 	COMMIT
 
--------------TESTE------------
-
-INSERT INTO ParqueCampismo VALUES('Alto Lima', 'Rua Lima', 4, 'lima@mail.com')
-
-select *from Atividade
-EXEC InsertAtividade @num =2, @ano=2017, @nome='Surf',@parque ='Alto Lima' ,@descricao='Praia e Mar', 
-					@lotacaoMaxima = 9, @dataRealizacao='2017-07-07', @precoParticipante =7.5
 
 
 ----UPDATE
@@ -75,9 +68,6 @@ BEGIN
 
 	COMMIT
 END
----------TESTE---------------
-EXEC UpdateAtividade @num = 2, @ano = 2017, @nome = 'Surf',@parque ='Alto Lima',@descricao = 'Ondas Gigantes',@lotacaoMaxima = 4, 
-	@dataRealizacao = '2017-07-07', @precoParticipante = 10.49
 
 --------DELETE ATIVIDADE
 GO
@@ -92,9 +82,3 @@ AS
 BEGIN TRAN
 	DELETE Atividade WHERE num = @num and ano = @ano
 	COMMIT
-
---------------TESTE---------------
-
-EXEC DeleteAtividade @num = 2, @ano =2017
-
-SELECT *FROM Atividade
