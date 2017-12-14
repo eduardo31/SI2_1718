@@ -79,9 +79,9 @@ CREATE PROC DeleteAtividade
 
 AS 
 BEGIN TRAN
-	DELETE Atividade WHERE num = @num and ano = @ano
-
 	IF EXISTS (SELECT * FROM HospEstAti WHERE num = @num and ano = @ano)
 		DELETE HospEstAti WHERE num = @num and ano = @ano
+	
+	DELETE Atividade WHERE num = @num and ano = @ano
 
 	COMMIT TRAN

@@ -62,8 +62,7 @@ CREATE PROC DeleteHospede
 AS
 SET xact_abort ON
 BEGIN TRAN
-	UPDATE Hospede SET exist = 'F' WHERE  nIdentificacao = @nIdentificacao
-
+	
 	IF EXISTS (SELECT * FROM HospEst WHERE nIdentificacao = @nIdentificacao)
 		 DELETE FROM HospEst WHERE nIdentificacao = @nIdentificacao 
 	
@@ -71,7 +70,10 @@ BEGIN TRAN
 		 DELETE FROM HospEstAti WHERE nIdentificacao = @nIdentificacao 
 
 	IF EXISTS (SELECT * FROM Estada WHERE nIdentificacao = @nIdentificacao)
-		 DELETE FROM HospEstAti WHERE nIdentificacao = @nIdentificacao 
+		 DELETE FROM HospEstAti WHERE nIdentificacao = @nIdentificacao
+
+	UPDATE Hospede SET exist = 'F' WHERE  nIdentificacao = @nIdentificacao
+
 	COMMIT
 
 

@@ -76,7 +76,7 @@ CREATE PROC DeleteAlojamento
 	@nome varchar(100)
 AS
 BEGIN TRAN
-	DELETE FROM Alojamento WHERE nome = @nome 
+
 
 	IF EXISTS (SELECT * FROM Tendas WHERE nomeAlojamento = @nome)
 		DELETE FROM Tendas WHERE nomeAlojamento = @nome
@@ -89,5 +89,7 @@ BEGIN TRAN
 	
 	IF EXISTS (SELECT * FROM HistoricoAloj WHERE alojamento = @nome)
 		DELETE FROM HistoricoAloj WHERE alojamento = @nome
+	
+	DELETE FROM Alojamento WHERE nome = @nome 
 	
 	COMMIT
