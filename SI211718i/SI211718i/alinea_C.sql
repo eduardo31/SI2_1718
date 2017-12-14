@@ -70,7 +70,7 @@ BEGIN TRAN
 		 DELETE FROM HospEstAti WHERE nIdentificacao = @nIdentificacao 
 
 	IF EXISTS (SELECT * FROM Estada WHERE nIdentificacao = @nIdentificacao)
-		 DELETE FROM HospEstAti WHERE nIdentificacao = @nIdentificacao
+		 DELETE FROM Estada WHERE nIdentificacao = @nIdentificacao
 
 	UPDATE Hospede SET exist = 'F' WHERE  nIdentificacao = @nIdentificacao
 
