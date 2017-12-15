@@ -4,7 +4,7 @@ IF OBJECT_ID('dbo.MediadePagamentos') IS NOT NULL
 	DROP FUNCTION dbo.MediadePagamentos
 GO
 CREATE FUNCTION dbo.MediadePagamentos(@ano int,@amostragem int)
-RETURNS int
+RETURNS money
 AS
 BEGIN 
 
@@ -18,9 +18,6 @@ BEGIN
 
 	DECLARE @id int
 	DECLARE @precos money
-
-	DECLARE @auxId int
-	DECLARE @auxPrecos money
 	
 	OPEN curAtividade
 	FETCH NEXT FROM curAtividade INTO @id, @precos
@@ -31,10 +28,6 @@ BEGIN
 		ELSE INSERT INTO @table VALUES (@id,@precos)
 
 		FETCH NEXT FROM curAtividade INTO @id, @precos
-
-		SELECT @auxId=( SELECT id FROM @table WHERE @id = id )
-		SELECT @auxPrecos = ( SELECT precos FROM @table WHERE @id = id )
-
 	END
 
 	CLOSE curAtividade
@@ -51,24 +44,17 @@ BEGIN
 	FETCH NEXT FROM curExtra INTO @id, @precos
 	WHILE(@@FETCH_STATUS = 0)
 	BEGIN
-		
-
 		IF EXISTS(SELECT * FROM @table WHERE @id = id )
 			UPDATE @table SET precos = precos + @precos WHERE id = @id
 		ELSE INSERT INTO @table VALUES (@id,@precos)
 
 		FETCH NEXT FROM curExtra INTO @id, @precos
-
-		SELECT @auxId=( SELECT id FROM @table WHERE @id = id )
-		SELECT @auxPrecos = ( SELECT precos FROM @table WHERE @id = id )
-
 	END
 
 	CLOSE curExtra
 	DEALLOCATE curExtra
 	
 	---CURSOR ALOJAMENTO---
-
 	DECLARE curAlojamento CURSOR FOR 
 	SELECT EstAlojExtra.id,Alojamento.precoBase FROM Alojamento 
 	INNER JOIN EstAlojExtra ON Alojamento.nome= EstAlojExtra.alojamento
@@ -79,25 +65,19 @@ BEGIN
 	FETCH NEXT FROM curAlojamento INTO @id, @precos
 	WHILE(@@FETCH_STATUS = 0)
 	BEGIN
-		
 		IF EXISTS(SELECT * FROM @table WHERE @id = id )
 			UPDATE @table SET precos = precos + @precos WHERE id = @id
 		ELSE INSERT INTO @table VALUES (@id,@precos)
 
 		FETCH NEXT FROM curAlojamento INTO @id, @precos
-
-		SELECT @auxId=( SELECT id FROM @table WHERE @id = id )
-		SELECT @auxPrecos = ( SELECT precos FROM @table WHERE @id = id )
-
 	END
 
 	CLOSE curAlojamento
 	DEALLOCATE curAlojamento
 
-	Declare @v XML = (select * from @table for xml auto)
-
+	
 	----CALCULAR A MÉDIA COM O INTERVALO DE AMOSTRAGEM-----
-	DECLARE @aux int, @total int, @current int
+	DECLARE @aux int, @total money, @current int
 	SET @current = 1
 	SET @total = 0
 	SET @aux = 0
@@ -115,15 +95,13 @@ BEGIN
 		SET @current = @current + 1
 		FETCH NEXT FROM cur INTO @id, @precos
 	END
+	
 	CLOSE cur
 	DEALLOCATE cur
 	
-	DECLARE @toRet int
+	DECLARE @toRet money
 	SET @toRet = @total/@aux 
 	
 	RETURN @toRet
 END
 GO
--------TESTE----------------
-
-SELECT dbo.MediadePagamentos (2018, 2)

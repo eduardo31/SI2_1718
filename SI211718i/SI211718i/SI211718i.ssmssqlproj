@@ -3,7 +3,19 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="DELL:DELL\Eduardo">
+        <ConnectionNode Name="ANA\ACSOUTO:anacsouto">
+          <Created>2017-12-14T15:25:33.327128+00:00</Created>
+          <Type>SQL</Type>
+          <Server>ANA\ACSOUTO</Server>
+          <UserName>anacsouto</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="DELL:ANA\Ana">
           <Created>2017-11-16T12:51:48.9281093+00:00</Created>
           <Type>SQL</Type>
           <Server>DELL</Server>
@@ -15,7 +27,7 @@
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
           <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
         </ConnectionNode>
-        <ConnectionNode Name="DESKTOP-0KFS6SE:DELL\Eduardo">
+        <ConnectionNode Name="DESKTOP-0KFS6SE:ANA\Ana">
           <Created>2017-11-19T09:46:02.4416716+00:00</Created>
           <Type>SQL</Type>
           <Server>DESKTOP-0KFS6SE</Server>
@@ -32,21 +44,21 @@
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="alinea_A_CreateTable.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ANA\ACSOUTO:False:anacsouto</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ANA\ACSOUTO</AssociatedConnSrvName>
+          <AssociatedConnUserName>anacsouto</AssociatedConnUserName>
           <FullPath>alinea_A_CreateTable.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_B_Drop.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ANA\ACSOUTO:False:anacsouto</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ANA\ACSOUTO</AssociatedConnSrvName>
+          <AssociatedConnUserName>anacsouto</AssociatedConnUserName>
           <FullPath>alinea_B_Drop.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_C.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ANA\ACSOUTO:False:anacsouto</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ANA\ACSOUTO</AssociatedConnSrvName>
+          <AssociatedConnUserName>anacsouto</AssociatedConnUserName>
           <FullPath>alinea_C.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_D.sql">
@@ -74,9 +86,9 @@
           <FullPath>alinea_G.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_H_tests.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ANA\ACSOUTO:False:anacsouto</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ANA\ACSOUTO</AssociatedConnSrvName>
+          <AssociatedConnUserName>anacsouto</AssociatedConnUserName>
           <FullPath>alinea_H_tests.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_I.sql">
@@ -104,9 +116,9 @@
           <FullPath>alinea_L.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_M.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ANA\ACSOUTO:False:anacsouto</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ANA\ACSOUTO</AssociatedConnSrvName>
+          <AssociatedConnUserName>anacsouto</AssociatedConnUserName>
           <FullPath>alinea_M.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_N.sql">
@@ -116,9 +128,9 @@
           <FullPath>alinea_N.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_O_tests.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ANA\ACSOUTO:False:anacsouto</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ANA\ACSOUTO</AssociatedConnSrvName>
+          <AssociatedConnUserName>anacsouto</AssociatedConnUserName>
           <FullPath>alinea_O_tests.sql</FullPath>
         </FileNode>
       </Items>

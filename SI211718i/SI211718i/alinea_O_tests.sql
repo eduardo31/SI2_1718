@@ -14,7 +14,6 @@ BEGIN TRAN
 
 		EXEC InsertHospede @nIdentificacao ='12352',@nif = 222, @nome ='Pedro Fonseca' , @morada='Rua ABC', @mail ='pfonseca@mail.com'
 
-
 		EXEC dbo.InsertHospede @nIdentificacao = '1234564', @nif = 333, @nome = 'Maria Carlota', @morada = 'Rua DEF',@mail = 'mcarlota@mail.com'
 
 		EXEC dbo.InsertHospede @nIdentificacao ='4561233',@nif = 444, @nome ='João Pereira' , @morada='Rua ABC', @mail ='jpereira@mail.com'
@@ -118,8 +117,6 @@ BEGIN TRAN
 		EXEC DeleteAlojamento @nome = 'Lima'
 	PRINT('VERIFICAÇÃO DA REMOÇÃO')
 		SELECT * FROM dbo.Alojamento
-	
-
 
 COMMIT
 GO
@@ -339,15 +336,6 @@ BEGIN TRAN
 	PRINT('---TESTE DA ALÍNEA H---') 
 
 	PRINT('INSERIR UMA ESTADA...')
-		/*Declare @idEstada int, @dataInicio date, @dataFim date;
-		set @idEstada = 3;
-		set @dataInicio='2018-08-02';
-		 set @dataFim = '2018-09-02';*/
-
-
-
-
-
 
 		EXEC CreateEstada @idEstada = 3,@dataInicio='2018-08-02',@dataFim = '2018-09-02'
 
@@ -363,9 +351,8 @@ BEGIN TRAN
 
 	PRINT('---TESTE DA ALÍNEA I---') 
 
-	PRINT('INSERIR 3 HÓSPEDES NUMA ATIVIDADE')
+	PRINT('INSERIR 2 HÓSPEDES NUMA ATIVIDADE')
 		EXEC InscreverUmHospedeNumaAtividade @nIdentificacaoHospede='12352',@numAtividade = 7, @anoAtividade =2018,	@idEstada = 3
-		/*EXEC InscreverUmHospedeNumaAtividade @nIdentificacaoHospede='1234564',@numAtividade = 7, @anoAtividade =2018,	@idEstada = 3*/
 		EXEC InscreverUmHospedeNumaAtividade @nIdentificacaoHospede='4561233',@numAtividade = 7, @anoAtividade =2018,	@idEstada = 3
 
 	PRINT('VERIFICAÇÃO DA INSERÇÃO DA ESTADA')
@@ -417,8 +404,33 @@ BEGIN TRAN
 	PRINT('LUGARES DISPONÍVEIS')
 		SELECT * FROM  ListarAtividadesDisponiveis ('2018-07-29','2018-09-04')
 	
-		PRINT('---------------TESTES--------------------------------TESTES--------------------------------TESTES-----------------')
+COMMIT
+----------------
+GO
+BEGIN TRAN
 
+	PRINT(' ')
+	PRINT('---TESTE DA ALÍNEA M---') 
+
+	PRINT('OBTENÇÃO DA MÉDIA DE PAGAMENTOS REALIZADOS NUM DADO ANO SENDO CALCAULADA COM UM INTERVALO DE AMOSTRAGEM ESPECIFICADO')
+	PRINT('INSERÇÃO DE UMA NOVA ESTADA')
+		EXEC InsertEstada @id = 4, @dataInicio ='2018-08-02', @dataFim = '2018-09-02', @nIdentificacao  = 777777 /*PROCEDIMENTO CRIADO NA ALÍNEA H*/
+
+	PRINT('INSERIR HÓSPEDES NUMA ATIVIDADE')
+		EXEC InscreverUmHospedeNumaAtividade @nIdentificacaoHospede='222222',@numAtividade = 22, @anoAtividade =2018,	@idEstada = 4
+		EXEC InscreverUmHospedeNumaAtividade @nIdentificacaoHospede='333333',@numAtividade = 22, @anoAtividade =2018,	@idEstada = 4
+		EXEC InscreverUmHospedeNumaAtividade @nIdentificacaoHospede='4444444',@numAtividade = 22, @anoAtividade =2018,	@idEstada = 4
+
+		EXEC InscreverUmHospedeNumaAtividade @nIdentificacaoHospede='5555555',@numAtividade = 7, @anoAtividade =2018,	@idEstada = 4
+		EXEC InscreverUmHospedeNumaAtividade @nIdentificacaoHospede='6666666',@numAtividade = 7, @anoAtividade =2018,	@idEstada = 4
+		EXEC InscreverUmHospedeNumaAtividade @nIdentificacaoHospede='777777',@numAtividade = 7, @anoAtividade =2018,	@idEstada = 4
+	PRINT('VERIFICAÇÃO')
+		SELECT * FROM dbo.HospEstAti
+	PRINT('OBTENÇÃO DA MÉDIA DE PAGAMENTOS REALIZADOS NO ANO ="2018" COM UM INTERVALO DE AMOSTRAGEM = 1')
+		SELECT dbo.MediadePagamentos (2018, 1)
+
+	PRINT('OBTENÇÃO DA MÉDIA DE PAGAMENTOS REALIZADOS NO ANO ="2018" COM UM INTERVALO DE AMOSTRAGEM = 2')
+		SELECT dbo.MediadePagamentos (2018, 2)
+	
 COMMIT
 
-GO
