@@ -8,8 +8,8 @@ IF OBJECT_ID('dbo.InsertAtividade') IS NOT NULL
 GO
 
 CREATE PROC InsertAtividade
-	@num int OUTPUT, 
-	@ano int OUTPUT, 
+	@num int, 
+	@ano int, 
 	@parque varchar(100),
 	@nome varchar(100) = NULL,
 	@descricao varchar(100) = NULL,
@@ -32,8 +32,8 @@ IF OBJECT_ID('dbo.UpdateAtividade') IS NOT NULL
 	DROP PROCEDURE dbo.UpdateAtividade
 GO
 CREATE PROC UpdateAtividade
-	@num int OUTPUT, 
-	@ano int OUTPUT, 
+	@num int, 
+	@ano int, 
 	@parque varchar(100),
 	@nome varchar(100) = NULL,
 	@descricao varchar(100) = NULL,

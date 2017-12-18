@@ -7,7 +7,7 @@ IF OBJECT_ID('dbo.InsertHospede') IS NOT NULL
 GO
 
 CREATE PROC InsertHospede
-	 @nIdentificacao varchar(100) OUTPUT ,
+	 @nIdentificacao varchar(100),
 	 @nif numeric = NULL, 
 	 @nome varchar(100) = NULL, 
 	 @morada varchar(100) = NULL,
@@ -26,7 +26,7 @@ IF OBJECT_ID('dbo.UpdateHospede') IS NOT NULL
 	DROP PROCEDURE dbo.UpdateHospede
 GO
 CREATE PROC UpdateHospede
-		@nIdentificacao varchar(100) OUTPUT ,
+		@nIdentificacao varchar(100),
 		@nif numeric = NULL, 
 		@nome varchar(100) = NULL, 
 		@morada varchar(100) = NULL,
