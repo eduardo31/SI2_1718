@@ -30,7 +30,7 @@ AS
 SET xact_abort ON 
 BEGIN TRANSACTION
 	
-	DECLARE @descricao varchar(5000), @totaldias int, @datadeinicio date, @datadefim date, @precocurr money, @precototal money, @hospedes int,@nome varchar(100),@nif numeric(9)
+	DECLARE @descricao varchar(max), @totaldias int, @datadeinicio date, @datadefim date, @precocurr money, @precototal money, @hospedes int,@nome varchar(100),@nif numeric(9)
 	select @datadeinicio = dataInicio FROM Estada WHERE id=@Id_Estada;
 	select @datadefim = dataFim FROM Estada WHERE id=@Id_Estada;
 	select @totaldias = DATEDIFF(day, @datadeinicio, @datadefim);
@@ -38,6 +38,8 @@ BEGIN TRANSACTION
 	select @nome = nome from Hospede Where nIdentificacao=(select nIdentificacao from Estada WHERE id=@Id_Estada)
 	select @nif = nif from Hospede Where nIdentificacao=(select nIdentificacao from Estada WHERE id=@Id_Estada)
 	/*select * from EstAlojExtra WHERE id=@Id_Estada;*/
+	set @descricao = CONCAT(CHAR(13),CHAR(10));
+	set @precototal = 0;
 	declare curs cursor for select distinct alojamento from EstAlojExtra  WHERE id=@Id_Estada
 	
 	for update open curs declare @alojamento varchar(100)fetch next from curs into @alojamento
@@ -58,12 +60,12 @@ BEGIN TRANSACTION
 		end
 		close aux 
 		deallocate aux
-
 		select @precocurr =  /*(select precoBase from Alojamento where nome=@alojamento)*/ @precocurr * @totaldias
 		select @precototal = @precototal + @precocurr
-		select @descricao = @descricao + 'Alojamento' + CHAR(13)+CHAR(10)
-		select @descricao = @descricao + (select descricao from Alojamento where nome=@alojamento) +' '+ @precocurr + CHAR(13)+CHAR(10)
-		select @descricao = @descricao + 'Extras' + CHAR(13)+CHAR(10)
+		/*set @descricao = @descricao + 'Alojamento' + CHAR(13)+CHAR(10)*/
+		select @descricao = CONCAT(@descricao , 'Alojamento' , CHAR(13),CHAR(10));
+		select @descricao = CONCAT(@descricao , 'Descrição: ',(select descricao from Alojamento where nome=@alojamento) , ' ',CONVERT(varchar(max), @precocurr) , CHAR(13),CHAR(10));
+		select @descricao = CONCAT(@descricao , 'Extras' , CHAR(13),CHAR(10));
 		declare curex cursor for select extra from EstAlojExtra WHERE id=@Id_Estada and alojamento = @alojamento
 		for update open curex declare @extra int fetch next from curex into @extra
 		while(@@FETCH_STATUS=0)
@@ -91,7 +93,7 @@ BEGIN TRANSACTION
 			if ((select tipo from Extra where id=@extra)='ExPessoa')
 				select @precocurr = @precocurr * @hospedes
 			select @precototal = @precototal + @precocurr
-			select @descricao = @descricao + (select descricao from Extra where id=@extra) +' '+ @precocurr + CHAR(13)+CHAR(10)
+			select @descricao = CONCAT(@descricao , (select descricao from Extra where id=@extra) ,' ', CONVERT(varchar(max), @precocurr) , CHAR(13),CHAR(10));
 			fetch next from curex into @extra
 		end
 		close curex 
@@ -101,14 +103,17 @@ BEGIN TRANSACTION
 	close curs 
 	deallocate curs
 	/*calcular preço actividades */
-	select @descricao = @descricao + 'Actividades' + CHAR(13)+CHAR(10)
-	declare curs cursor for select num,ano from HospEstAti  WHERE id=@Id_Estada and nIdentificacao=(select nIdentificacao from HospEst where id = @Id_Estada )
+	select @descricao = CONCAT(@descricao , 'Actividades' , CHAR(13),CHAR(10));
+	declare curs cursor for 
+	select num,ano 
+	from HospEstAti  
+	WHERE id=@Id_Estada and nIdentificacao=(select top 1 nIdentificacao from HospEst where id = @Id_Estada )
 	for update open curs declare @num int, @anoact int fetch next from curs into @num, @anoact
 	while(@@FETCH_STATUS=0)
 	begin
 		select @precocurr = (select precoParticipante from Atividade where num = @num and ano=@ano)
 		select @precototal = @precototal + @precocurr
-		select @descricao = @descricao + (select descricao from Atividade where num = @num and ano=@ano) +' '+ @precocurr + CHAR(13)+CHAR(10)
+		select @descricao = CONCAT(@descricao , (select descricao from Atividade where num = @num and ano=@ano) , ' ',CONVERT(varchar(max), @precocurr) , CHAR(13),CHAR(10));
 		fetch next from curs into @num, @anoact
 	end
 	close curs 
@@ -116,20 +121,20 @@ BEGIN TRANSACTION
 
 	/*adicionar total*/
 
-	 select @descricao = @descricao + 'TOTAL: ' + @precototal + CHAR(13)+CHAR(10)
+	 select @descricao = CONCAT(@descricao , 'TOTAL: ' , CONVERT(varchar(max), @precototal) , CHAR(13),CHAR(10));
 	/*CALCULO DO Id_Fatura*/
 	
 	SELECT @Id_Factura = max(id) FROM Fatura WHERE YEAR(@ano)=YEAR(ano)
 	IF @Id_Factura IS NULL
 		SET @Id_Factura=0
 	SET @Id_Factura=@Id_Factura+1	
-	
+	---set @descricao = 'blablabla'
 	INSERT INTO Fatura (id,ano,idEstada,descricao,nome,nif)values(@Id_Factura,@ano,@Id_Estada,@descricao,@nome,@nif)
 
 
 
 COMMIT
-RETURN 
+/*RETURN @Id_Factura*/
 
 GO
 
@@ -158,12 +163,11 @@ BEGIN
 IF EXISTS (SELECT * FROM inserted) and EXISTS (SELECT * FROM deleted)
 begin
 	IF((select precoBase from inserted) != (select precoBase from deleted))
-		INSERT INTO HistoricoExtra(extra, dataInicial, preco) VALUES((select nome from inserted), GETDATE(), (select precoBase from inserted))
+		INSERT INTO HistoricoAloj(alojamento, preco, dataInicial) VALUES((select nome from inserted),(select precoBase from inserted),GETDATE())
 end
 IF EXISTS (SELECT * FROM inserted) and NOT EXISTS (SELECT * FROM deleted)
-	INSERT INTO HistoricoExtra(extra, dataInicial, preco) VALUES((select nome from inserted), GETDATE(), (select precoBase from inserted))
+	INSERT INTO HistoricoAloj(alojamento, preco, dataInicial) VALUES((select nome from inserted), (select precoBase from inserted), GETDATE())
 END
 
-print('Teste J')
 
 

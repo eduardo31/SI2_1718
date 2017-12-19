@@ -144,7 +144,7 @@ CREATE TABLE Fatura(
 	id int,
 	ano int,
 	idEstada int NOT NULL FOREIGN KEY REFERENCES Estada(id),
-	descricao varchar(1000),
+	descricao varchar(max),
 	nome varchar(100),
 	nif numeric(9)
 	PRIMARY KEY(id,ano)
@@ -193,7 +193,7 @@ IF OBJECT_ID('HistoricoAloj') is null
 		alojamento varchar(100) FOREIGN KEY REFERENCES Alojamento(nome),
 		preco money NOT NULL,
 		dataInicial date NOT NULL	
-		PRIMARY KEY(alojamento)
+		PRIMARY KEY(alojamento,dataInicial)
 	)
 
 GO
@@ -203,6 +203,6 @@ IF OBJECT_ID('HistoricoExtra') is null
 		extra int FOREIGN KEY REFERENCES Extra(id),
 		dataInicial date NOT NULL,
 		preco money	NOT NULL,
-		PRIMARY KEY(extra)	
+		PRIMARY KEY(extra,dataInicial)	
 )
 GO

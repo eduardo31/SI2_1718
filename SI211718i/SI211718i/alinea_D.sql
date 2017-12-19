@@ -7,7 +7,7 @@ IF OBJECT_ID('dbo.InsertAlojamento') IS NOT NULL
 	DROP PROCEDURE dbo.InsertAlojamento
 GO
 CREATE PROC InsertAlojamento
-	@nome varchar(100) OUTPUT, 
+	@nome varchar(100)= NULL OUTPUT , 
 	@parque varchar(100) = NULL, 
 	@localizacao varchar(100)= NULL,
 	@descricao varchar(100) = NULL,
