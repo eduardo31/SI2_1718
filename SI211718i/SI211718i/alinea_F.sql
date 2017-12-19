@@ -7,7 +7,7 @@ IF OBJECT_ID('dbo.InsertExtraPessoal') IS NOT NULL
 GO
 
 CREATE PROC dbo.InsertExtraPessoal
-	@id int OUTPUT, @tipo varchar(4) = NULL
+	@id int, @tipo varchar(4) = NULL
 
 AS
 SET xact_abort ON 

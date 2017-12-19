@@ -6,7 +6,7 @@ IF OBJECT_ID('dbo.InsertExtraAloj') IS NOT NULL
 	DROP PROCEDURE dbo.InsertExtraAloj
 GO
 CREATE PROC InsertExtraAloj
-	@id int OUTPUT, @tipo varchar(4) = NULL
+	@id int, @tipo varchar(4) = NULL
 
 AS
 SET xact_abort ON 
@@ -23,7 +23,7 @@ IF OBJECT_ID('dbo.UpdateExtraAloj') IS NOT NULL
 	DROP PROCEDURE dbo.UpdateExtraAloj
 GO
 CREATE PROC UpdateExtraAloj
-		@id int OUTPUT, @tipo varchar(4) = NULL
+		@id int, @tipo varchar(4) = NULL
 
 AS
 SET xact_abort on 
