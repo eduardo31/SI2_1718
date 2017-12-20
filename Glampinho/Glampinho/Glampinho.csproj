@@ -34,16 +34,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -64,11 +69,22 @@
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Commands.cs" />
-    <Compile Include="Commands\DeleteEventos.cs" />
+    <Compile Include="Commands\Alojamento.cs" />
+    <Compile Include="Commands\Atividade.cs" />
+    <Compile Include="Commands\EnviarEmail.cs" />
+    <Compile Include="Commands\Estada.cs" />
+    <Compile Include="Commands\ExtraAloj.cs" />
+    <Compile Include="Commands\ExtraPessoal.cs" />
+    <Compile Include="Commands\Fatura.cs" />
+    <Compile Include="Commands\Hospede.cs" />
+    <Compile Include="Commands\HospedeNaAtividade.cs" />
+    <Compile Include="Commands\ListaLugaresDisponiveis.cs" />
     <Compile Include="Email.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Commands\EnviarMailIntervalo.cs" />
+    <Compile Include="EnviarMailResponsaveis1_Result.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="EnviarMailResponsaveis_Result.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
     </Compile>
@@ -78,8 +94,6 @@
     <Compile Include="EstAlojExtra.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Commands\EventosCancelados.cs" />
-    <Compile Include="Commands\EventosDisponiveis.cs" />
     <Compile Include="Commands\ExitCmd.cs" />
     <Compile Include="Extra.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
@@ -93,7 +107,6 @@
     <Compile Include="Fatura.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Commands\FaturasPorAno.cs" />
     <Compile Include="GlampinhoEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,7 +146,6 @@
     <Compile Include="ListarAtividadesDisponiveis_Result.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Commands\PagarSubscricao.cs" />
     <Compile Include="Exceptions\MismatchedCommand.cs" />
     <Compile Include="ParqueCampismo.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
@@ -148,8 +160,6 @@
     <Compile Include="Tendas.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Commands\TotalPagoPorCliente.cs" />
-    <Compile Include="Commands\VerificarEstados.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -159,6 +169,7 @@
     </EntityDeploy>
     <None Include="GlampinhoEntities.edmx.diagram">
       <DependentUpon>GlampinhoEntities.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -179,6 +190,13 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

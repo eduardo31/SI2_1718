@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Eduardo\Desktop\ISEL\Inverno1718\SI2\SI2_1718\Glampinho\Glampinho\GlampinhoEntities.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Anna'\Desktop\SI2_recente\SI2_1718\Glampinho\Glampinho\GlampinhoEntities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

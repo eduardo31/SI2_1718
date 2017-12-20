@@ -12,6 +12,7 @@ namespace Glampinho
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
@@ -155,8 +156,12 @@ namespace Glampinho
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<InscreverUmHospedeNumaAtividade_Result>("InscreverUmHospedeNumaAtividade", nIdentificacaoHospedeParameter, numAtividadeParameter, anoAtividadeParameter, idEstadaParameter);
         }
     
-        public virtual int InsertAlojamento(ObjectParameter nome, string parque, string localizacao, string descricao, Nullable<decimal> precoBase, Nullable<int> nMaxPessoas, string tipo)
+        public virtual int InsertAlojamento(string nome, string parque, string localizacao, string descricao, Nullable<decimal> precoBase, Nullable<int> nMaxPessoas, string tipo)
         {
+            var nomeParameter = nome != null ?
+                new ObjectParameter("nome", nome) :
+                new ObjectParameter("nome", typeof(string));
+    
             var parqueParameter = parque != null ?
                 new ObjectParameter("parque", parque) :
                 new ObjectParameter("parque", typeof(string));
@@ -181,7 +186,7 @@ namespace Glampinho
                 new ObjectParameter("tipo", tipo) :
                 new ObjectParameter("tipo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertAlojamento", nome, parqueParameter, localizacaoParameter, descricaoParameter, precoBaseParameter, nMaxPessoasParameter, tipoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertAlojamento", nomeParameter, parqueParameter, localizacaoParameter, descricaoParameter, precoBaseParameter, nMaxPessoasParameter, tipoParameter);
         }
     
         public virtual int InsertAlojEstEx(Nullable<int> id, string alojamento, Nullable<int> extra)
@@ -201,8 +206,16 @@ namespace Glampinho
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertAlojEstEx", idParameter, alojamentoParameter, extraParameter);
         }
     
-        public virtual ObjectResult<InsertAtividade_Result> InsertAtividade(ObjectParameter num, ObjectParameter ano, string parque, string nome, string descricao, Nullable<int> lotacaoMaxima, Nullable<System.DateTime> dataRealizacao, Nullable<decimal> precoParticipante)
+        public virtual ObjectResult<InsertAtividade_Result> InsertAtividade(Nullable<int> num, Nullable<int> ano, string parque, string nome, string descricao, Nullable<int> lotacaoMaxima, Nullable<System.DateTime> dataRealizacao, Nullable<decimal> precoParticipante)
         {
+            var numParameter = num.HasValue ?
+                new ObjectParameter("num", num) :
+                new ObjectParameter("num", typeof(int));
+    
+            var anoParameter = ano.HasValue ?
+                new ObjectParameter("ano", ano) :
+                new ObjectParameter("ano", typeof(int));
+    
             var parqueParameter = parque != null ?
                 new ObjectParameter("parque", parque) :
                 new ObjectParameter("parque", typeof(string));
@@ -227,7 +240,7 @@ namespace Glampinho
                 new ObjectParameter("precoParticipante", precoParticipante) :
                 new ObjectParameter("precoParticipante", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<InsertAtividade_Result>("InsertAtividade", num, ano, parqueParameter, nomeParameter, descricaoParameter, lotacaoMaximaParameter, dataRealizacaoParameter, precoParticipanteParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<InsertAtividade_Result>("InsertAtividade", numParameter, anoParameter, parqueParameter, nomeParameter, descricaoParameter, lotacaoMaximaParameter, dataRealizacaoParameter, precoParticipanteParameter);
         }
     
         public virtual int InsertEstada(ObjectParameter id, Nullable<System.DateTime> dataInicio, Nullable<System.DateTime> dataFim, string nIdentificacao)
@@ -268,26 +281,38 @@ namespace Glampinho
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertExtra", idParameter, descricaoParameter, precoDiaParameter, tipoParameter);
         }
     
-        public virtual int InsertExtraAloj(ObjectParameter id, string tipo)
+        public virtual int InsertExtraAloj(Nullable<int> id, string tipo)
         {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
             var tipoParameter = tipo != null ?
                 new ObjectParameter("tipo", tipo) :
                 new ObjectParameter("tipo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertExtraAloj", id, tipoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertExtraAloj", idParameter, tipoParameter);
         }
     
-        public virtual int InsertExtraPessoal(ObjectParameter id, string tipo)
+        public virtual int InsertExtraPessoal(Nullable<int> id, string tipo)
         {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
             var tipoParameter = tipo != null ?
                 new ObjectParameter("tipo", tipo) :
                 new ObjectParameter("tipo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertExtraPessoal", id, tipoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertExtraPessoal", idParameter, tipoParameter);
         }
     
-        public virtual int InsertHospede(ObjectParameter nIdentificacao, Nullable<decimal> nif, string nome, string morada, string mail)
+        public virtual int InsertHospede(string nIdentificacao, Nullable<decimal> nif, string nome, string morada, string mail)
         {
+            var nIdentificacaoParameter = nIdentificacao != null ?
+                new ObjectParameter("nIdentificacao", nIdentificacao) :
+                new ObjectParameter("nIdentificacao", typeof(string));
+    
             var nifParameter = nif.HasValue ?
                 new ObjectParameter("nif", nif) :
                 new ObjectParameter("nif", typeof(decimal));
@@ -304,7 +329,7 @@ namespace Glampinho
                 new ObjectParameter("mail", mail) :
                 new ObjectParameter("mail", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertHospede", nIdentificacao, nifParameter, nomeParameter, moradaParameter, mailParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertHospede", nIdentificacaoParameter, nifParameter, nomeParameter, moradaParameter, mailParameter);
         }
     
         public virtual int InsertHospEst(Nullable<int> id, string nIdentificacao)
@@ -388,8 +413,12 @@ namespace Glampinho
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SendMail", nifParameter, textoParameter);
         }
     
-        public virtual int UpdateAlojamento(ObjectParameter nome, string parque, string localizacao, string descricao, Nullable<decimal> precoBase, Nullable<int> nMaxPessoas, string tipo)
+        public virtual int UpdateAlojamento(string nome, string parque, string localizacao, string descricao, Nullable<decimal> precoBase, Nullable<int> nMaxPessoas, string tipo)
         {
+            var nomeParameter = nome != null ?
+                new ObjectParameter("nome", nome) :
+                new ObjectParameter("nome", typeof(string));
+    
             var parqueParameter = parque != null ?
                 new ObjectParameter("parque", parque) :
                 new ObjectParameter("parque", typeof(string));
@@ -414,11 +443,19 @@ namespace Glampinho
                 new ObjectParameter("tipo", tipo) :
                 new ObjectParameter("tipo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAlojamento", nome, parqueParameter, localizacaoParameter, descricaoParameter, precoBaseParameter, nMaxPessoasParameter, tipoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAlojamento", nomeParameter, parqueParameter, localizacaoParameter, descricaoParameter, precoBaseParameter, nMaxPessoasParameter, tipoParameter);
         }
     
-        public virtual int UpdateAtividade(ObjectParameter num, ObjectParameter ano, string parque, string nome, string descricao, Nullable<int> lotacaoMaxima, Nullable<System.DateTime> dataRealizacao, Nullable<decimal> precoParticipante)
+        public virtual int UpdateAtividade(Nullable<int> num, Nullable<int> ano, string parque, string nome, string descricao, Nullable<int> lotacaoMaxima, Nullable<System.DateTime> dataRealizacao, Nullable<decimal> precoParticipante)
         {
+            var numParameter = num.HasValue ?
+                new ObjectParameter("num", num) :
+                new ObjectParameter("num", typeof(int));
+    
+            var anoParameter = ano.HasValue ?
+                new ObjectParameter("ano", ano) :
+                new ObjectParameter("ano", typeof(int));
+    
             var parqueParameter = parque != null ?
                 new ObjectParameter("parque", parque) :
                 new ObjectParameter("parque", typeof(string));
@@ -443,16 +480,20 @@ namespace Glampinho
                 new ObjectParameter("precoParticipante", precoParticipante) :
                 new ObjectParameter("precoParticipante", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAtividade", num, ano, parqueParameter, nomeParameter, descricaoParameter, lotacaoMaximaParameter, dataRealizacaoParameter, precoParticipanteParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAtividade", numParameter, anoParameter, parqueParameter, nomeParameter, descricaoParameter, lotacaoMaximaParameter, dataRealizacaoParameter, precoParticipanteParameter);
         }
     
-        public virtual int UpdateExtraAloj(ObjectParameter id, string tipo)
+        public virtual int UpdateExtraAloj(Nullable<int> id, string tipo)
         {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
             var tipoParameter = tipo != null ?
                 new ObjectParameter("tipo", tipo) :
                 new ObjectParameter("tipo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateExtraAloj", id, tipoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateExtraAloj", idParameter, tipoParameter);
         }
     
         public virtual int UpdateExtraPessoal(Nullable<int> id, string tipo)
@@ -468,8 +509,12 @@ namespace Glampinho
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateExtraPessoal", idParameter, tipoParameter);
         }
     
-        public virtual int UpdateHospede(ObjectParameter nIdentificacao, Nullable<decimal> nif, string nome, string morada, string mail)
+        public virtual int UpdateHospede(string nIdentificacao, Nullable<decimal> nif, string nome, string morada, string mail)
         {
+            var nIdentificacaoParameter = nIdentificacao != null ?
+                new ObjectParameter("nIdentificacao", nIdentificacao) :
+                new ObjectParameter("nIdentificacao", typeof(string));
+    
             var nifParameter = nif.HasValue ?
                 new ObjectParameter("nif", nif) :
                 new ObjectParameter("nif", typeof(decimal));
@@ -486,7 +531,42 @@ namespace Glampinho
                 new ObjectParameter("mail", mail) :
                 new ObjectParameter("mail", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateHospede", nIdentificacao, nifParameter, nomeParameter, moradaParameter, mailParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateHospede", nIdentificacaoParameter, nifParameter, nomeParameter, moradaParameter, mailParameter);
+        }
+    
+        public virtual int PagarEstada1(Nullable<int> id_Estada, Nullable<int> ano, ObjectParameter id_Factura)
+        {
+            var id_EstadaParameter = id_Estada.HasValue ?
+                new ObjectParameter("Id_Estada", id_Estada) :
+                new ObjectParameter("Id_Estada", typeof(int));
+    
+            var anoParameter = ano.HasValue ?
+                new ObjectParameter("ano", ano) :
+                new ObjectParameter("ano", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PagarEstada1", id_EstadaParameter, anoParameter, id_Factura);
+        }
+    
+        public virtual ObjectResult<EnviarMailResponsaveis1_Result> EnviarMailResponsaveis1(Nullable<System.DateTime> datainicio)
+        {
+            var datainicioParameter = datainicio.HasValue ?
+                new ObjectParameter("datainicio", datainicio) :
+                new ObjectParameter("datainicio", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EnviarMailResponsaveis1_Result>("EnviarMailResponsaveis1", datainicioParameter);
+        }
+    
+        public virtual int SendMail1(Nullable<int> nif, string texto)
+        {
+            var nifParameter = nif.HasValue ?
+                new ObjectParameter("nif", nif) :
+                new ObjectParameter("nif", typeof(int));
+    
+            var textoParameter = texto != null ?
+                new ObjectParameter("texto", texto) :
+                new ObjectParameter("texto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SendMail1", nifParameter, textoParameter);
         }
     }
 }

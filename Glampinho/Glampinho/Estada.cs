@@ -36,5 +36,6 @@ namespace Glampinho
         public virtual ICollection<HospEstAti> HospEstAti { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hospede> Hospede { get; set; }
+        public virtual Hospede Hospede1 { get; set; }
     }
 }

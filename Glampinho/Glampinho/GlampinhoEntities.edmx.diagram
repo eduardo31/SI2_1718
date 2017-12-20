@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="GlampinhoModel.Alojamento" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="GlampinhoModel.Atividade" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GlampinhoModel.Bungalows" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Email" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Email" Width="1.5" PointX="0.625" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="GlampinhoModel.Estada" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GlampinhoModel.EstAlojExtra" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GlampinhoModel.Extra" Width="1.5" PointX="6" PointY="19" IsExpanded="true" />
@@ -39,6 +39,7 @@
         <AssociationConnector Association="GlampinhoModel.FK__HospEstAt__nIden__66EA454A" ManuallyRouted="false" />
         <AssociationConnector Association="GlampinhoModel.FK__Telefone__parque__382F5661" ManuallyRouted="false" />
         <AssociationConnector Association="GlampinhoModel.HospEst" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__Estada__nIdentif__0A5E6A10" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

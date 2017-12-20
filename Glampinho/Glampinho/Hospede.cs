@@ -19,6 +19,7 @@ namespace Glampinho
         {
             this.HospEstAti = new HashSet<HospEstAti>();
             this.Estada = new HashSet<Estada>();
+            this.Estada1 = new HashSet<Estada>();
         }
     
         public string nIdentificacao { get; set; }
@@ -26,10 +27,13 @@ namespace Glampinho
         public string nome { get; set; }
         public string morada { get; set; }
         public string mail { get; set; }
+        public string exist { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HospEstAti> HospEstAti { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estada> Estada { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Estada> Estada1 { get; set; }
     }
 }

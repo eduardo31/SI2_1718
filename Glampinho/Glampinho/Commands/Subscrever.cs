@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
 namespace SoAventura.Commands
 {
     class Subscrever : ICmd
@@ -88,7 +88,6 @@ namespace SoAventura.Commands
                 return;
             }
 
-            
             using (var ctx = new SoAventuraEntities())
             {
                 try
@@ -124,4 +123,4 @@ namespace SoAventura.Commands
 
 
     }
-}
+}*/
