@@ -8,7 +8,40 @@ namespace Glampinho
 {
     public class Program
     {
-        
+        private static List<ICmd> SetupCommands()
+        {
+            List<ICmd> cmds = new List<ICmd>();
+
+            cmds.Add(new InsertHospede("1. Inserir um Hóspede."));
+            cmds.Add(new UpdateHospede("2. Atualizar a informação de um Hóspede."));
+            cmds.Add(new RemoveHospede("3. Remover um Hóspede."));
+
+            /* cmds.Add(new Commands.Alojamento("4. Inserir um Alojamento."));
+             cmds.Add(new Commands.Alojamento("5. Atualizar a informação de um Alojamento."));
+             cmds.Add(new Commands.Alojamento("6. Remover um Alojamento."));
+
+             cmds.Add(new Commands.ExtraAloj("7. Inserir um Extra de Alojamento."));
+             cmds.Add(new Commands.ExtraAloj("8. Atualizar a informação de um Extra de Alojamento."));
+             cmds.Add(new Commands.ExtraAloj("9. Remover um Extra de Alojamento."));
+
+             cmds.Add(new Commands.ExtraPessoal("10. Inserir um Extra Pessoal."));
+             cmds.Add(new Commands.ExtraPessoal("11. Atualizar a informação de um Extra Pessoal."));
+             cmds.Add(new Commands.ExtraPessoal("12. Remover um Extra Pessoal."));
+
+             cmds.Add(new Commands.Atividade("13. Inserir uma Atividade."));
+             cmds.Add(new Commands.Atividade("14. Atualizar a informação de uma Atividade."));
+             cmds.Add(new Commands.Atividade("14. Remover uma Atividade."));
+
+             cmds.Add(new Commands.Estada("15.Criar uma Estada."));
+             cmds.Add(new Commands.HospedeNaAtividade("16. Inserção de um Hospede numa Atividade."));*/
+            //cmds.Add(new Commands.Fatura("17. Emissão de uma fatura."));
+            //  cmds.Add(new Commands.EnviarEmail("18. Enviar email a todos os hospedes responsaveis."));
+            //  cmds.Add(new Commands.ListaLugaresDisponiveis("19. Listagem de Atividades com lugares disponiveis."));
+            int last = cmds.Count + 1;
+            cmds.Add(new ExitCmd(last + ". Fechar a aplicaçao."));
+
+            return cmds;
+        }
 
         public static void Main(string[] args)
         {
@@ -40,13 +73,24 @@ namespace Glampinho
                 {
                     value = Convert.ToInt32(Console.ReadLine());
                 }
-                catch (MismatchedCommand e)
+                catch (FormatException)
                 {
-                    Console.WriteLine(e.Message);
+                    Console.WriteLine("Insira um numero do commando...");
                     continue;
                 }
-                // cmd = cmds[value - 1];
-                cmd = cmds[value];
+                if (value > cmds.Count || value <= 0)
+                {
+                    try
+                    {
+                        throw new MismatchedCommand("Commando invalido tente novamente....");
+                    }
+                    catch (MismatchedCommand e)
+                    {
+                        Console.WriteLine(e.Message);
+                        continue;
+                    }
+                }
+                cmd = cmds[value - 1];
 
                 string connectionString = ConfigurationManager.ConnectionStrings["ConnectString"].ConnectionString;
 
@@ -64,40 +108,7 @@ namespace Glampinho
                 Console.Clear();    
             }
         }
-        private static List<ICmd> SetupCommands()
-        {
-            List<ICmd> cmds = new List<ICmd>();
-
-            cmds.Add(new Commands.Hospede("1. Inserir um Hóspede."));
-            cmds.Add(new Commands.Hospede("2. Atualizar a informação de um Hóspede."));
-            cmds.Add(new Commands.Hospede("3. Remover um Hóspede."));
-
-            cmds.Add(new Commands.Alojamento("4. Inserir um Alojamento."));
-            cmds.Add(new Commands.Alojamento("5. Atualizar a informação de um Alojamento."));
-            cmds.Add(new Commands.Alojamento("6. Remover um Alojamento."));
-
-            cmds.Add(new Commands.ExtraAloj("7. Inserir um Extra de Alojamento."));
-            cmds.Add(new Commands.ExtraAloj("8. Atualizar a informação de um Extra de Alojamento."));
-            cmds.Add(new Commands.ExtraAloj("9. Remover um Extra de Alojamento."));
-
-            cmds.Add(new Commands.ExtraPessoal("10. Inserir um Extra Pessoal."));
-            cmds.Add(new Commands.ExtraPessoal("11. Atualizar a informação de um Extra Pessoal."));
-            cmds.Add(new Commands.ExtraPessoal("12. Remover um Extra Pessoal."));
-
-            cmds.Add(new Commands.Atividade("13. Inserir uma Atividade."));
-            cmds.Add(new Commands.Atividade("14. Atualizar a informação de uma Atividade."));
-            cmds.Add(new Commands.Atividade("14. Remover uma Atividade."));
-
-            cmds.Add(new Commands.Estada("15.Criar uma Estada."));
-            cmds.Add(new Commands.HospedeNaAtividade("16. Inserção de um Hospede numa Atividade."));
-            //cmds.Add(new Commands.Fatura("17. Emissão de uma fatura."));
-          //  cmds.Add(new Commands.EnviarEmail("18. Enviar email a todos os hospedes responsaveis."));
-          //  cmds.Add(new Commands.ListaLugaresDisponiveis("19. Listagem de Atividades com lugares disponiveis."));
-
-            cmds.Add(new ExitCmd("20. Fechar a aplicaçao."));
-
-            return cmds;
-        }
+       
         private static void PrintCommands(List<ICmd> cmds)
         {
             Console.WriteLine("Pick a command:");

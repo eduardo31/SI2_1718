@@ -15,12 +15,12 @@ namespace Glampinho.Commands
         }
            
 
-        public override void ExecuteEnt()
+        public void ExecuteEnt()
         {
             Environment.Exit(0);
         }
 
-        public override void Execute(string con)
+        public void Execute(string con)
         {
             Environment.Exit(0);
         }

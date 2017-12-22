@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoAventura.Tools
+namespace Glampinho.Tools
 {
     public static class TablePrinter
     {

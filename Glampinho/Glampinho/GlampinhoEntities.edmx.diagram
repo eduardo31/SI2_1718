@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ccfa59f5cf8846b783d115b0cb1f9ca9" Name="Diagram1" ZoomLevel="45">
+      <Diagram DiagramId="ccfa59f5cf8846b783d115b0cb1f9ca9" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="GlampinhoModel.Alojamento" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="GlampinhoModel.Atividade" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GlampinhoModel.Bungalows" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Glampinho
 {
-    public abstract class ICmd
+    public interface ICmd
     {
-        public abstract void ExecuteEnt();//Entity Framework
-        public abstract void Execute(string con);// ADO.NET
+        void ExecuteEnt();//Entity Framework
+        void Execute(string con);// ADO.NET
 
-        public StringBuilder convertToString(string con)
+        /*public StringBuilder convertToString(string con)
         {
             StringBuilder n = new StringBuilder();
 
@@ -22,6 +22,6 @@ namespace Glampinho
                 else return n;
             }
             return n;
-        }
+        }*/
     }
 }

@@ -8,38 +8,28 @@ using System.Threading.Tasks;
 
 namespace Glampinho.Commands
 {
-    public class ListaLugaresDisponiveis : ICmd
+    class RemoveHospede : ICmd
     {
-        public string Description;
-        public StringBuilder n = new StringBuilder();
-        public List<string> list = new List<string>();
-        public ListaLugaresDisponiveis(string s)
+        public readonly string Description;
+        public RemoveHospede(string desc)
         {
-            n = convertToString(s);
-            Description = s;
-            list = InfoGetter(list);
+            Description = desc;
         }
-
-        private List<string> InfoGetter(List<string> list)
+        public override string ToString()
         {
-            Console.WriteLine("Listagem de todas as atividades com lugares disponiveis entre um dado intervalo de datas especificado");
-
-            Console.WriteLine("Insira a data de inicio.");
-            list.Add(Console.ReadLine());
-
-            Console.WriteLine("Insira a data de fim.");
-            list.Add(Console.ReadLine());
-
-            return list;
+            return Description;
         }
-
-        public override void Execute(string con)
+        public List<string> prms = new List<string>();
+        
+        public void Execute(string con)
         {
-            DateTime dataInicio, dataFim;
+            int nIdentificacao;
+            
+            prms = InfoGetter(prms);
+
             try
             {
-                dataInicio = Convert.ToDateTime(list[0]);
-                dataFim = Convert.ToDateTime(list[1]);
+                nIdentificacao = Convert.ToInt32(prms[0]);
             }
             catch (FormatException)
             {
@@ -55,13 +45,13 @@ namespace Glampinho.Commands
                     using (SqlCommand cmd = sql.CreateCommand())
                     {
                         cmd.Transaction = tran;
-                        cmd.CommandType = CommandType.TableDirect;
-                        cmd.CommandText = "ListarAtividadesDisponiveis";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "DeleteHospede";
 
-                        cmd.Parameters.Add("@dataInicio", SqlDbType.Date).Value = dataInicio;
-                        cmd.Parameters.Add("@dataFim", SqlDbType.Date).Value = dataFim;
+                        cmd.Parameters.Add("@nIdentificacao", SqlDbType.NVarChar).Value = nIdentificacao;
 
-                        cmd.ExecuteNonQuery(); 
+                        cmd.ExecuteNonQuery();
+                        Console.WriteLine("Hospede removido com sucesso!");
                     }
                 }
                 catch (Exception e)
@@ -75,13 +65,15 @@ namespace Glampinho.Commands
             }
         }
 
-        public override void ExecuteEnt()
+        public void ExecuteEnt()
         {
-            DateTime dataInicio, dataFim;
+            int nIdentificacao;
+
+            prms = InfoGetter(prms);
+
             try
             {
-                dataInicio = Convert.ToDateTime(list[0]);
-                dataFim = Convert.ToDateTime(list[1]);
+                nIdentificacao = Convert.ToInt32(prms[0]);
             }
             catch (FormatException)
             {
@@ -92,7 +84,7 @@ namespace Glampinho.Commands
             {
                 try
                 {
-                    ctx.ListarAtividadesDisponiveis(dataInicio,dataFim);
+                    ctx.DeleteHospede(nIdentificacao.ToString());
                     ctx.SaveChanges();
                 }
                 catch (Exception e)
@@ -101,6 +93,16 @@ namespace Glampinho.Commands
                     return;
                 }
             }
+            Console.WriteLine("Hospede removido com sucesso!");
+        }
+        private List<string> InfoGetter(List<string> prms)
+        {
+            Console.WriteLine("Apagar um hospede da basedados.");
+
+            Console.WriteLine("Seleccionar id do hospede:");
+            prms.Add(Console.ReadLine());
+
+            return prms;
         }
     }
 }
