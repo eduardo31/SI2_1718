@@ -86,9 +86,9 @@
           <FullPath>alinea_G.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_H_tests.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ANA\ACSOUTO:False:anacsouto</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>ANA\ACSOUTO</AssociatedConnSrvName>
-          <AssociatedConnUserName>anacsouto</AssociatedConnUserName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DELL:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DELL</AssociatedConnSrvName>
+          <AssociatedConnUserName />
           <FullPath>alinea_H_tests.sql</FullPath>
         </FileNode>
         <FileNode Name="alinea_I.sql">

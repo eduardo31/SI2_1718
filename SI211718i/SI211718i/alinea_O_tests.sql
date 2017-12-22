@@ -367,7 +367,6 @@ BEGIN TRAN
 
 COMMIT
 
-/*teste j*/
 GO
 BEGIN TRAN
 	PRINT(CONCAT(CHAR(13),CHAR(10)))
@@ -387,7 +386,28 @@ BEGIN TRAN
 COMMIT
 GO
 /*teste k*/
---------------------------------------------------------------
+BEGIN TRAN
+	PRINT(CONCAT(CHAR(13),CHAR(10)))
+	PRINT('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
+	PRINT('----------------------------------------------------------------TESTES ALINEA K----------------------------------------------------------------')
+
+	PRINT('Emails')
+	SELECT * FROM Email
+	select * from Estada
+	select * from Hospede
+	EXEC dbo.EnviarMailResponsaveis @dias = 30000;
+	
+	SELECT * FROM Email
+	/* @fat int
+	set @fat = 0
+	EXEC dbo.PagarEstada @Id_Estada = 3, @ano = 2018, @Id_Factura = @fat
+	PRINT('Novo id da fatura inserida:')
+	PRINT(CONVERT(varchar(max), @fat))
+	PRINT('FATURA inserida descricao?')
+	SELECT * FROM Fatura
+	delete from Fatura where id = 1 and ano = 2018*/
+COMMIT
+
 GO
 BEGIN TRAN
 
