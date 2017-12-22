@@ -59,6 +59,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alojamento.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Atividade.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bungalows.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BungalowView.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Commands.cs" />
     <Compile Include="Commands\CreateEstada.cs" />
     <Compile Include="Commands\EnviarEmail.cs" />
@@ -70,6 +82,7 @@
     <Compile Include="Commands\InsertExtraPessoal.cs" />
     <Compile Include="Commands\InsertHospede.cs" />
     <Compile Include="Commands\ListaLugaresDisponiveis.cs" />
+    <Compile Include="Commands\HospedesContas.cs" />
     <Compile Include="Commands\RemoveAlojamento.cs" />
     <Compile Include="Commands\RemoveAtividade.cs" />
     <Compile Include="Commands\RemoveExtraAloj.cs" />
@@ -82,6 +95,28 @@
     <Compile Include="Commands\UpdateExtraPessoal.cs" />
     <Compile Include="Commands\UpdateHospede.cs" />
     <Compile Include="Commands\ExitCmd.cs" />
+    <Compile Include="Email.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Estada.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstAlojExtra.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\MismatchedCommand.cs" />
+    <Compile Include="Extra.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraAloj.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraPessoa.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fatura.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="GlampinhoEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,9 +132,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GlampinhoEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Exceptions\MismatchedCommand.cs" />
+    <Compile Include="HistoricoAloj.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricoExtra.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hospede.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HospEstAti.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListarAtividadesDisponiveis_Result.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParqueCampismo.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Telefone.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tendas.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tools\TablePrinter.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -110,12 +168,14 @@
     </EntityDeploy>
     <None Include="GlampinhoEntities.edmx.diagram">
       <DependentUpon>GlampinhoEntities.edmx</DependentUpon>
-      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GlampinhoEntities.Context.tt">
@@ -128,9 +188,6 @@
       <DependentUpon>GlampinhoEntities.edmx</DependentUpon>
       <LastGenOutput>GlampinhoEntities.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

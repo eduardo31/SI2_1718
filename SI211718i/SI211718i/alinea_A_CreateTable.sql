@@ -144,7 +144,7 @@ IF OBJECT_ID('Fatura') is null
 CREATE TABLE Fatura(
 	id int,
 	ano int,
-	idEstada int FOREIGN KEY REFERENCES Estada(id),
+	idEstada int NOT NULL FOREIGN KEY REFERENCES Estada(id),
 	descricao varchar(max),
 	nome varchar(100),
 	nif numeric(9)
@@ -157,7 +157,7 @@ IF OBJECT_ID('Atividade') is null
 	CREATE TABLE Atividade(
 		num int,
 		ano int,
-		parque varchar(100) FOREIGN KEY REFERENCES ParqueCampismo(nome),
+		parque varchar(100) NOT NULL FOREIGN KEY REFERENCES ParqueCampismo(nome),
 		nome varchar(100) NOT NULL,
 		descricao varchar(100) NOT NULL,
 		lotacaoMaxima int NOT NULL,
@@ -181,7 +181,7 @@ IF OBJECT_ID('HospEstAti') is null
 	CREATE TABLE HospEstAti(
 		num int, 
 		ano int,
-		id int FOREIGN KEY REFERENCES Estada,
+		id int NOT NULL FOREIGN KEY REFERENCES Estada,
 		nIdentificacao varchar(100) REFERENCES Hospede,
 		PRIMARY KEY(num,ano,id,nIdentificacao),
 		FOREIGN KEY(num,ano) REFERENCES Atividade,

@@ -40,9 +40,10 @@ namespace Glampinho
 
              cmds.Add(new EnviarEmail("19. Enviar email a todos os hospedes responsaveis."));
 
-             cmds.Add(new ListaLugaresDisponiveis("20. Listagem de Atividades com lugares disponiveis."));
+             cmds.Add(new HospedesContas("20. Total pago por hospedes."));
+             cmds.Add(new ListaLugaresDisponiveis("21. Listagem de Atividades com lugares disponiveis."));
 
-            cmds.Add(new RemoveParque("21. Apagar Parque."));
+            cmds.Add(new RemoveParque("22. Apagar Parque."));
             int last = cmds.Count+1;
             cmds.Add(new ExitCmd(last + ". Fechar a aplicaçao."));
 

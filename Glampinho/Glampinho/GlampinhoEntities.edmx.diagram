@@ -4,43 +4,43 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ccfa59f5cf8846b783d115b0cb1f9ca9" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="GlampinhoModel.Alojamento" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Atividade" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Bungalows" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Email" Width="1.5" PointX="0.625" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Estada" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.EstAlojExtra" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Extra" Width="1.5" PointX="6" PointY="19" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.ExtraAloj" Width="1.5" PointX="8.25" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.ExtraPessoa" Width="1.5" PointX="8.25" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Fatura" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.HistoricoAloj" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.HistoricoExtra" Width="1.5" PointX="8.25" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Hospede" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.HospEstAti" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.ParqueCampismo" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Telefone" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GlampinhoModel.Tendas" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
-        <AssociationConnector Association="GlampinhoModel.FK__Alojament__parqu__3BFFE745" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__Bungalows__nomeA__44952D46" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__EstAlojEx__aloja__50FB042B" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__Historico__aloja__6ABAD62E" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__Tendas__nomeAloj__40C49C62" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__Atividade__parqu__5F492382" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__HospEstAti__67DE6983" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__EstAlojExtra__id__5006DFF2" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__Fatura__idEstada__5C6CB6D7" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__HospEstAti__id__65F62111" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__EstAlojEx__extra__51EF2864" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__ExtraAloj__id__589C25F3" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__ExtraPessoa__id__54CB950F" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__Historico__extra__6D9742D9" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__HospEstAt__nIden__66EA454A" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__Telefone__parque__382F5661" ManuallyRouted="false" />
+      <Diagram DiagramId="2b11c91f95e749248bab08097f6b6b4c" Name="Diagram1">
+        <EntityTypeShape EntityType="GlampinhoModel.Alojamento" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Atividade" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Bungalows" Width="1.5" PointX="3" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Email" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Estada" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.EstAlojExtra" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Extra" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.ExtraAloj" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.ExtraPessoa" Width="1.5" PointX="3" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Fatura" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.HistoricoAloj" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.HistoricoExtra" Width="1.5" PointX="3" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Hospede" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.HospEstAti" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.ParqueCampismo" Width="1.5" PointX="1.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Telefone" Width="1.5" PointX="3.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.Tendas" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlampinhoModel.BungalowView" Width="1.5" PointX="5.75" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="GlampinhoModel.FK__Alojament__parqu__69F59331" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__Bungalows__nomeA__728AD932" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__EstAlojEx__aloja__00D8F889" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__Historico__aloja__1A98CA8C" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__Tendas__nomeAloj__6EBA484E" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__Atividade__parqu__0F2717E0" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__HospEstAti__17BC5DE1" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__Estada__nIdentif__7A2BFAFA" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__EstAlojExtra__id__7FE4D450" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__Fatura__idEstada__0C4AAB35" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__HospEstAti__id__15D4156F" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__EstAlojEx__extra__01CD1CC2" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__ExtraAloj__id__087A1A51" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__ExtraPessoa__id__04A9896D" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__Historico__extra__1D753737" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__HospEstAt__nIden__16C839A8" ManuallyRouted="false" />
+        <AssociationConnector Association="GlampinhoModel.FK__Telefone__parque__6625024D" ManuallyRouted="false" />
         <AssociationConnector Association="GlampinhoModel.HospEst" ManuallyRouted="false" />
-        <AssociationConnector Association="GlampinhoModel.FK__Estada__nIdentif__0A5E6A10" />
-        <EntityTypeShape EntityType="GlampinhoModel.BungalowView" Width="1.5" PointX="7.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

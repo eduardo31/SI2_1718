@@ -82,7 +82,7 @@ namespace Glampinho.Commands
             {
                 try
                 {
-                    ctx.EnviarMailResponsaveis1(intervalo);
+                    ctx.EnviarMailResponsaveis(intervalo);
                     ctx.SaveChanges();
                 }
                 catch (Exception e)

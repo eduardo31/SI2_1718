@@ -480,4 +480,3 @@ BEGIN TRAN
 		SELECT dbo.MediadePagamentos (2018, 2)
 	
 COMMIT
-

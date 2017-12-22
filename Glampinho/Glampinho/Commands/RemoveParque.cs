@@ -45,7 +45,6 @@ namespace Glampinho.Commands
                         cmd.CommandText =   "USE Glampinho; "+
                                             "declare @nome varchar(100) "+
                                             "set @nome = '"+ parque + "' "+
-                                            "update Atividade set parque = null where parque = @nome "+
                                             "declare curs cursor for select nome from Alojamento WHERE parque = @nome "+
                                             "for update open curs declare @nomealoj varchar(100)fetch next from curs into @nomealoj "+
                                             "while (@@FETCH_STATUS = 0) "+
@@ -57,7 +56,7 @@ namespace Glampinho.Commands
                                                 "for update open curs1 declare @id int fetch next from curs1 into @id "+
                                                 "while (@@FETCH_STATUS = 0) "+
                                                 "begin "+
-                                                    "update Fatura set idEstada = null where idEstada = @id "+
+                                                    "delete from Fatura where idEstada = @id " +
                                                     "delete from HospEstAti where id = @id "+
                                                     "delete from HospEst where id = @id "+
                                                     "delete from EstAlojExtra where alojamento = @nomealoj "+
@@ -81,7 +80,8 @@ namespace Glampinho.Commands
                                             "close curs2 "+
                                             "deallocate curs2 "+
                                             "delete from dbo.Alojamento where parque = @nome "+
-                                            "delete from dbo.Telefone where parque = @nome "+
+                                            "delete from Atividade where parque = @nome " +
+                                            "delete from dbo.Telefone where parque = @nome " +
                                             "delete from dbo.ParqueCampismo where nome = @nome ";
                         cmd.Transaction = tran;
                         cmd.ExecuteNonQuery();
