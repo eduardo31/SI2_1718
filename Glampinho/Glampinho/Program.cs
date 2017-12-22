@@ -16,11 +16,11 @@ namespace Glampinho
             cmds.Add(new UpdateHospede("2. Atualizar a informação de um Hóspede."));
             cmds.Add(new RemoveHospede("3. Remover um Hóspede."));
 
-            /* cmds.Add(new Commands.Alojamento("4. Inserir um Alojamento."));
-             cmds.Add(new Commands.Alojamento("5. Atualizar a informação de um Alojamento."));
-             cmds.Add(new Commands.Alojamento("6. Remover um Alojamento."));
+            cmds.Add(new InsertAlojamento("4. Inserir um Alojamento."));
+            cmds.Add(new UpdateAlojamento("5. Atualizar a informação de um Alojamento."));
+            cmds.Add(new RemoveAlojamento("6. Remover um Alojamento."));
 
-             cmds.Add(new Commands.ExtraAloj("7. Inserir um Extra de Alojamento."));
+            /* cmds.Add(new Commands.ExtraAloj("7. Inserir um Extra de Alojamento."));
              cmds.Add(new Commands.ExtraAloj("8. Atualizar a informação de um Extra de Alojamento."));
              cmds.Add(new Commands.ExtraAloj("9. Remover um Extra de Alojamento."));
 
