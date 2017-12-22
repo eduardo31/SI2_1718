@@ -20,24 +20,29 @@ namespace Glampinho
             cmds.Add(new UpdateAlojamento("5. Atualizar a informação de um Alojamento."));
             cmds.Add(new RemoveAlojamento("6. Remover um Alojamento."));
 
-            /* cmds.Add(new Commands.ExtraAloj("7. Inserir um Extra de Alojamento."));
-             cmds.Add(new Commands.ExtraAloj("8. Atualizar a informação de um Extra de Alojamento."));
-             cmds.Add(new Commands.ExtraAloj("9. Remover um Extra de Alojamento."));
+             cmds.Add(new InsertExtraAloj("7. Inserir um Extra de Alojamento."));
+             cmds.Add(new UpdateExtraAloj("8. Atualizar a informação de um Extra de Alojamento."));
+             cmds.Add(new RemoveExtraAloj("9. Remover um Extra de Alojamento."));
 
-             cmds.Add(new Commands.ExtraPessoal("10. Inserir um Extra Pessoal."));
-             cmds.Add(new Commands.ExtraPessoal("11. Atualizar a informação de um Extra Pessoal."));
-             cmds.Add(new Commands.ExtraPessoal("12. Remover um Extra Pessoal."));
+             cmds.Add(new InsertExtraPessoal("10. Inserir um Extra Pessoal."));
+             cmds.Add(new UpdateExtraPessoal("11. Atualizar a informação de um Extra Pessoal."));
+             cmds.Add(new RemoveExtraPessoal("12. Remover um Extra Pessoal."));
 
-             cmds.Add(new Commands.Atividade("13. Inserir uma Atividade."));
-             cmds.Add(new Commands.Atividade("14. Atualizar a informação de uma Atividade."));
-             cmds.Add(new Commands.Atividade("14. Remover uma Atividade."));
+             cmds.Add(new InsertAtividade("13. Inserir uma Atividade."));
+             cmds.Add(new UpdateAtividade("14. Atualizar a informação de uma Atividade."));
+             cmds.Add(new RemoveAtividade("15. Remover uma Atividade."));
 
-             cmds.Add(new Commands.Estada("15.Criar uma Estada."));
-             cmds.Add(new Commands.HospedeNaAtividade("16. Inserção de um Hospede numa Atividade."));*/
-            //cmds.Add(new Commands.Fatura("17. Emissão de uma fatura."));
-            //  cmds.Add(new Commands.EnviarEmail("18. Enviar email a todos os hospedes responsaveis."));
-            //  cmds.Add(new Commands.ListaLugaresDisponiveis("19. Listagem de Atividades com lugares disponiveis."));
-            int last = cmds.Count + 1;
+             cmds.Add(new CreateEstada("16.Criar uma Estada."));
+
+             cmds.Add(new HospedeNaAtividade("17. Inserção de um Hospede numa Atividade."));
+
+             cmds.Add(new Faturas("18. Emissão de uma fatura."));
+
+             cmds.Add(new EnviarEmail("19. Enviar email a todos os hospedes responsaveis."));
+
+             cmds.Add(new ListaLugaresDisponiveis("20. Listagem de Atividades com lugares disponiveis."));
+
+            int last = cmds.Count+1;
             cmds.Add(new ExitCmd(last + ". Fechar a aplicaçao."));
 
             return cmds;

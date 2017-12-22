@@ -72,11 +72,25 @@
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Commands.cs" />
+    <Compile Include="Commands\CreateEstada.cs" />
+    <Compile Include="Commands\EnviarEmail.cs" />
+    <Compile Include="Commands\Faturas.cs" />
+    <Compile Include="Commands\HospedeNaAtividade.cs" />
     <Compile Include="Commands\InsertAlojamento.cs" />
+    <Compile Include="Commands\InsertAtividade.cs" />
+    <Compile Include="Commands\InsertExtraAloj.cs" />
+    <Compile Include="Commands\InsertExtraPessoal.cs" />
     <Compile Include="Commands\InsertHospede.cs" />
+    <Compile Include="Commands\ListaLugaresDisponiveis.cs" />
     <Compile Include="Commands\RemoveAlojamento.cs" />
+    <Compile Include="Commands\RemoveAtividade.cs" />
+    <Compile Include="Commands\RemoveExtraAloj.cs" />
+    <Compile Include="Commands\RemoveExtraPessoal.cs" />
     <Compile Include="Commands\RemoveHospede.cs" />
     <Compile Include="Commands\UpdateAlojamento.cs" />
+    <Compile Include="Commands\UpdateAtividade.cs" />
+    <Compile Include="Commands\UpdateExtraAloj.cs" />
+    <Compile Include="Commands\UpdateExtraPessoal.cs" />
     <Compile Include="Commands\UpdateHospede.cs" />
     <Compile Include="Email.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
