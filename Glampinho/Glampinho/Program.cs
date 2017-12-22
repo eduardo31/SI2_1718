@@ -42,6 +42,7 @@ namespace Glampinho
 
              cmds.Add(new ListaLugaresDisponiveis("20. Listagem de Atividades com lugares disponiveis."));
 
+            cmds.Add(new RemoveParque("21. Apagar Parque."));
             int last = cmds.Count+1;
             cmds.Add(new ExitCmd(last + ". Fechar a aplicaçao."));
 

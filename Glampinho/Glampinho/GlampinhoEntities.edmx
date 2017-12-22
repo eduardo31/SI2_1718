@@ -24,7 +24,7 @@
           </Key>
           <Property Name="num" Type="int" Nullable="false" />
           <Property Name="ano" Type="int" Nullable="false" />
-          <Property Name="parque" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="parque" Type="varchar" MaxLength="100" />
           <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="descricao" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="lotacaoMaxima" Type="int" Nullable="false" />
@@ -96,7 +96,7 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="ano" Type="int" Nullable="false" />
-          <Property Name="idEstada" Type="int" Nullable="false" />
+          <Property Name="idEstada" Type="int" />
           <Property Name="descricao" Type="varchar(max)" />
           <Property Name="nome" Type="varchar" MaxLength="100" />
           <Property Name="nif" Type="numeric" Precision="9" Scale="0" />
@@ -198,7 +198,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
           <Property Name="precoBase" Type="money" Nullable="false" />
           <Property Name="nMaxPessoas" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Alojament__parqu__41D1C7E7">
+        <Association Name="FK__Alojament__parqu__0651DABD">
           <End Role="ParqueCampismo" Type="Self.ParqueCampismo" Multiplicity="0..1" />
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -210,8 +210,8 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Atividade__parqu__67034C96">
-          <End Role="ParqueCampismo" Type="Self.ParqueCampismo" Multiplicity="1" />
+        <Association Name="FK__Atividade__parqu__2B835F6C">
+          <End Role="ParqueCampismo" Type="Self.ParqueCampismo" Multiplicity="0..1" />
           <End Role="Atividade" Type="Self.Atividade" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ParqueCampismo">
@@ -222,7 +222,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bungalows__nomeA__4A670DE8">
+        <Association Name="FK__Bungalows__nomeA__0EE720BE">
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="1" />
           <End Role="Bungalows" Type="Self.Bungalows" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -234,7 +234,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Estada__nIdentif__52082FB0">
+        <Association Name="FK__Estada__nIdentif__16884286">
           <End Role="Hospede" Type="Self.Hospede" Multiplicity="0..1" />
           <End Role="Estada" Type="Self.Estada" Multiplicity="*" />
           <ReferentialConstraint>
@@ -246,7 +246,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EstAlojEx__aloja__58B52D3F">
+        <Association Name="FK__EstAlojEx__aloja__1D354015">
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="1" />
           <End Role="EstAlojExtra" Type="Self.EstAlojExtra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +258,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EstAlojEx__extra__59A95178">
+        <Association Name="FK__EstAlojEx__extra__1E29644E">
           <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
           <End Role="EstAlojExtra" Type="Self.EstAlojExtra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -270,7 +270,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EstAlojExtra__id__57C10906">
+        <Association Name="FK__EstAlojExtra__id__1C411BDC">
           <End Role="Estada" Type="Self.Estada" Multiplicity="1" />
           <End Role="EstAlojExtra" Type="Self.EstAlojExtra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -282,7 +282,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ExtraAloj__id__60564F07">
+        <Association Name="FK__ExtraAloj__id__24D661DD">
           <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
           <End Role="ExtraAloj" Type="Self.ExtraAloj" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -294,7 +294,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ExtraPessoa__id__5C85BE23">
+        <Association Name="FK__ExtraPessoa__id__2105D0F9">
           <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
           <End Role="ExtraPessoa" Type="Self.ExtraPessoa" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -306,8 +306,8 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Fatura__idEstada__6426DFEB">
-          <End Role="Estada" Type="Self.Estada" Multiplicity="1" />
+        <Association Name="FK__Fatura__idEstada__28A6F2C1">
+          <End Role="Estada" Type="Self.Estada" Multiplicity="0..1" />
           <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Estada">
@@ -318,7 +318,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Historico__aloja__7274FF42">
+        <Association Name="FK__Historico__aloja__36F51218">
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="1" />
           <End Role="HistoricoAloj" Type="Self.HistoricoAloj" Multiplicity="*" />
           <ReferentialConstraint>
@@ -330,7 +330,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Historico__extra__75516BED">
+        <Association Name="FK__Historico__extra__39D17EC3">
           <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
           <End Role="HistoricoExtra" Type="Self.HistoricoExtra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -342,7 +342,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEst__id__69DFB941">
+        <Association Name="FK__HospEst__id__2E5FCC17">
           <End Role="Estada" Type="Self.Estada" Multiplicity="1" />
           <End Role="HospEst" Type="Self.HospEst" Multiplicity="*" />
           <ReferentialConstraint>
@@ -354,7 +354,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEst__nIdenti__6AD3DD7A">
+        <Association Name="FK__HospEst__nIdenti__2F53F050">
           <End Role="Hospede" Type="Self.Hospede" Multiplicity="1" />
           <End Role="HospEst" Type="Self.HospEst" Multiplicity="*" />
           <ReferentialConstraint>
@@ -366,7 +366,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEstAt__nIden__6EA46E5E">
+        <Association Name="FK__HospEstAt__nIden__33248134">
           <End Role="Hospede" Type="Self.Hospede" Multiplicity="1" />
           <End Role="HospEstAti" Type="Self.HospEstAti" Multiplicity="*" />
           <ReferentialConstraint>
@@ -378,7 +378,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEstAti__6F989297">
+        <Association Name="FK__HospEstAti__3418A56D">
           <End Role="Atividade" Type="Self.Atividade" Multiplicity="1" />
           <End Role="HospEstAti" Type="Self.HospEstAti" Multiplicity="*" />
           <ReferentialConstraint>
@@ -392,7 +392,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEstAti__id__6DB04A25">
+        <Association Name="FK__HospEstAti__id__32305CFB">
           <End Role="Estada" Type="Self.Estada" Multiplicity="1" />
           <End Role="HospEstAti" Type="Self.HospEstAti" Multiplicity="*" />
           <ReferentialConstraint>
@@ -404,7 +404,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Telefone__parque__3E013703">
+        <Association Name="FK__Telefone__parque__028149D9">
           <End Role="ParqueCampismo" Type="Self.ParqueCampismo" Multiplicity="1" />
           <End Role="Telefone" Type="Self.Telefone" Multiplicity="*" />
           <ReferentialConstraint>
@@ -416,7 +416,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tendas__nomeAloj__46967D04">
+        <Association Name="FK__Tendas__nomeAloj__0B168FDA">
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="1" />
           <End Role="Tendas" Type="Self.Tendas" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -617,79 +617,79 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
     [BungalowView].[nMaxPessoas] AS [nMaxPessoas]
     FROM [dbo].[BungalowView] AS [BungalowView]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Alojament__parqu__41D1C7E7" Association="Self.FK__Alojament__parqu__41D1C7E7">
+          <AssociationSet Name="FK__Alojament__parqu__0651DABD" Association="Self.FK__Alojament__parqu__0651DABD">
             <End Role="ParqueCampismo" EntitySet="ParqueCampismo" />
             <End Role="Alojamento" EntitySet="Alojamento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Atividade__parqu__67034C96" Association="Self.FK__Atividade__parqu__67034C96">
+          <AssociationSet Name="FK__Atividade__parqu__2B835F6C" Association="Self.FK__Atividade__parqu__2B835F6C">
             <End Role="ParqueCampismo" EntitySet="ParqueCampismo" />
             <End Role="Atividade" EntitySet="Atividade" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bungalows__nomeA__4A670DE8" Association="Self.FK__Bungalows__nomeA__4A670DE8">
+          <AssociationSet Name="FK__Bungalows__nomeA__0EE720BE" Association="Self.FK__Bungalows__nomeA__0EE720BE">
             <End Role="Alojamento" EntitySet="Alojamento" />
             <End Role="Bungalows" EntitySet="Bungalows" />
           </AssociationSet>
-          <AssociationSet Name="FK__Estada__nIdentif__52082FB0" Association="Self.FK__Estada__nIdentif__52082FB0">
+          <AssociationSet Name="FK__Estada__nIdentif__16884286" Association="Self.FK__Estada__nIdentif__16884286">
             <End Role="Hospede" EntitySet="Hospede" />
             <End Role="Estada" EntitySet="Estada" />
           </AssociationSet>
-          <AssociationSet Name="FK__EstAlojEx__aloja__58B52D3F" Association="Self.FK__EstAlojEx__aloja__58B52D3F">
+          <AssociationSet Name="FK__EstAlojEx__aloja__1D354015" Association="Self.FK__EstAlojEx__aloja__1D354015">
             <End Role="Alojamento" EntitySet="Alojamento" />
             <End Role="EstAlojExtra" EntitySet="EstAlojExtra" />
           </AssociationSet>
-          <AssociationSet Name="FK__EstAlojEx__extra__59A95178" Association="Self.FK__EstAlojEx__extra__59A95178">
+          <AssociationSet Name="FK__EstAlojEx__extra__1E29644E" Association="Self.FK__EstAlojEx__extra__1E29644E">
             <End Role="Extra" EntitySet="Extra" />
             <End Role="EstAlojExtra" EntitySet="EstAlojExtra" />
           </AssociationSet>
-          <AssociationSet Name="FK__EstAlojExtra__id__57C10906" Association="Self.FK__EstAlojExtra__id__57C10906">
+          <AssociationSet Name="FK__EstAlojExtra__id__1C411BDC" Association="Self.FK__EstAlojExtra__id__1C411BDC">
             <End Role="Estada" EntitySet="Estada" />
             <End Role="EstAlojExtra" EntitySet="EstAlojExtra" />
           </AssociationSet>
-          <AssociationSet Name="FK__ExtraAloj__id__60564F07" Association="Self.FK__ExtraAloj__id__60564F07">
+          <AssociationSet Name="FK__ExtraAloj__id__24D661DD" Association="Self.FK__ExtraAloj__id__24D661DD">
             <End Role="Extra" EntitySet="Extra" />
             <End Role="ExtraAloj" EntitySet="ExtraAloj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ExtraPessoa__id__5C85BE23" Association="Self.FK__ExtraPessoa__id__5C85BE23">
+          <AssociationSet Name="FK__ExtraPessoa__id__2105D0F9" Association="Self.FK__ExtraPessoa__id__2105D0F9">
             <End Role="Extra" EntitySet="Extra" />
             <End Role="ExtraPessoa" EntitySet="ExtraPessoa" />
           </AssociationSet>
-          <AssociationSet Name="FK__Fatura__idEstada__6426DFEB" Association="Self.FK__Fatura__idEstada__6426DFEB">
+          <AssociationSet Name="FK__Fatura__idEstada__28A6F2C1" Association="Self.FK__Fatura__idEstada__28A6F2C1">
             <End Role="Estada" EntitySet="Estada" />
             <End Role="Fatura" EntitySet="Fatura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Historico__aloja__7274FF42" Association="Self.FK__Historico__aloja__7274FF42">
+          <AssociationSet Name="FK__Historico__aloja__36F51218" Association="Self.FK__Historico__aloja__36F51218">
             <End Role="Alojamento" EntitySet="Alojamento" />
             <End Role="HistoricoAloj" EntitySet="HistoricoAloj" />
           </AssociationSet>
-          <AssociationSet Name="FK__Historico__extra__75516BED" Association="Self.FK__Historico__extra__75516BED">
+          <AssociationSet Name="FK__Historico__extra__39D17EC3" Association="Self.FK__Historico__extra__39D17EC3">
             <End Role="Extra" EntitySet="Extra" />
             <End Role="HistoricoExtra" EntitySet="HistoricoExtra" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEst__id__69DFB941" Association="Self.FK__HospEst__id__69DFB941">
+          <AssociationSet Name="FK__HospEst__id__2E5FCC17" Association="Self.FK__HospEst__id__2E5FCC17">
             <End Role="Estada" EntitySet="Estada" />
             <End Role="HospEst" EntitySet="HospEst" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEst__nIdenti__6AD3DD7A" Association="Self.FK__HospEst__nIdenti__6AD3DD7A">
+          <AssociationSet Name="FK__HospEst__nIdenti__2F53F050" Association="Self.FK__HospEst__nIdenti__2F53F050">
             <End Role="Hospede" EntitySet="Hospede" />
             <End Role="HospEst" EntitySet="HospEst" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEstAt__nIden__6EA46E5E" Association="Self.FK__HospEstAt__nIden__6EA46E5E">
+          <AssociationSet Name="FK__HospEstAt__nIden__33248134" Association="Self.FK__HospEstAt__nIden__33248134">
             <End Role="Hospede" EntitySet="Hospede" />
             <End Role="HospEstAti" EntitySet="HospEstAti" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEstAti__6F989297" Association="Self.FK__HospEstAti__6F989297">
+          <AssociationSet Name="FK__HospEstAti__3418A56D" Association="Self.FK__HospEstAti__3418A56D">
             <End Role="Atividade" EntitySet="Atividade" />
             <End Role="HospEstAti" EntitySet="HospEstAti" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEstAti__id__6DB04A25" Association="Self.FK__HospEstAti__id__6DB04A25">
+          <AssociationSet Name="FK__HospEstAti__id__32305CFB" Association="Self.FK__HospEstAti__id__32305CFB">
             <End Role="Estada" EntitySet="Estada" />
             <End Role="HospEstAti" EntitySet="HospEstAti" />
           </AssociationSet>
-          <AssociationSet Name="FK__Telefone__parque__3E013703" Association="Self.FK__Telefone__parque__3E013703">
+          <AssociationSet Name="FK__Telefone__parque__028149D9" Association="Self.FK__Telefone__parque__028149D9">
             <End Role="ParqueCampismo" EntitySet="ParqueCampismo" />
             <End Role="Telefone" EntitySet="Telefone" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tendas__nomeAloj__46967D04" Association="Self.FK__Tendas__nomeAloj__46967D04">
+          <AssociationSet Name="FK__Tendas__nomeAloj__0B168FDA" Association="Self.FK__Tendas__nomeAloj__0B168FDA">
             <End Role="Alojamento" EntitySet="Alojamento" />
             <End Role="Tendas" EntitySet="Tendas" />
           </AssociationSet>
@@ -727,7 +727,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
           </Key>
           <Property Name="num" Type="Int32" Nullable="false" />
           <Property Name="ano" Type="Int32" Nullable="false" />
-          <Property Name="parque" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="parque" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="lotacaoMaxima" Type="Int32" Nullable="false" />
@@ -815,7 +815,7 @@ warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primar
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="ano" Type="Int32" Nullable="false" />
-          <Property Name="idEstada" Type="Int32" Nullable="false" />
+          <Property Name="idEstada" Type="Int32" />
           <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="nif" Type="Decimal" Precision="9" Scale="0" />
