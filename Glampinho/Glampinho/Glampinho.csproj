@@ -68,6 +68,9 @@
     <Compile Include="Bungalows.cs">
       <DependentUpon>GlampinhoEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="BungalowView.cs">
+      <DependentUpon>GlampinhoEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Commands.cs" />
     <Compile Include="Commands\Alojamento.cs" />
     <Compile Include="Commands\Atividade.cs" />

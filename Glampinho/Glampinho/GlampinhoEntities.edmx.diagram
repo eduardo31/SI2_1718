@@ -40,6 +40,7 @@
         <AssociationConnector Association="GlampinhoModel.FK__Telefone__parque__382F5661" ManuallyRouted="false" />
         <AssociationConnector Association="GlampinhoModel.HospEst" ManuallyRouted="false" />
         <AssociationConnector Association="GlampinhoModel.FK__Estada__nIdentif__0A5E6A10" />
+        <EntityTypeShape EntityType="GlampinhoModel.BungalowView" Width="1.5" PointX="7.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

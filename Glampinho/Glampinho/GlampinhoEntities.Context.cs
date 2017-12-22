@@ -45,6 +45,7 @@ namespace Glampinho
         public virtual DbSet<ParqueCampismo> ParqueCampismo { get; set; }
         public virtual DbSet<Telefone> Telefone { get; set; }
         public virtual DbSet<Tendas> Tendas { get; set; }
+        public virtual DbSet<BungalowView> BungalowView { get; set; }
     
         [DbFunction("GlampinhoEntities", "ListarAtividadesDisponiveis")]
         public virtual IQueryable<ListarAtividadesDisponiveis_Result> ListarAtividadesDisponiveis(Nullable<System.DateTime> dataInicio, Nullable<System.DateTime> dataFim)
@@ -547,13 +548,13 @@ namespace Glampinho
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PagarEstada1", id_EstadaParameter, anoParameter, id_Factura);
         }
     
-        public virtual ObjectResult<EnviarMailResponsaveis1_Result> EnviarMailResponsaveis1(Nullable<System.DateTime> datainicio)
+        public virtual ObjectResult<EnviarMailResponsaveis1_Result> EnviarMailResponsaveis1(Nullable<int> dias)
         {
-            var datainicioParameter = datainicio.HasValue ?
-                new ObjectParameter("datainicio", datainicio) :
-                new ObjectParameter("datainicio", typeof(System.DateTime));
+            var diasParameter = dias.HasValue ?
+                new ObjectParameter("dias", dias) :
+                new ObjectParameter("dias", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EnviarMailResponsaveis1_Result>("EnviarMailResponsaveis1", datainicioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EnviarMailResponsaveis1_Result>("EnviarMailResponsaveis1", diasParameter);
         }
     
         public virtual int SendMail1(Nullable<int> nif, string texto)

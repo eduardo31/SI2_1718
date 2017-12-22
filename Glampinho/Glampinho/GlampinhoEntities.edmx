@@ -41,10 +41,11 @@
         <EntityType Name="Email">
           <Key>
             <PropertyRef Name="nif" />
+            <PropertyRef Name="texto" />
           </Key>
           <Property Name="nif" Type="int" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="200" />
-          <Property Name="texto" Type="varchar" MaxLength="1000" />
+          <Property Name="texto" Type="varchar" MaxLength="600" Nullable="false" />
         </EntityType>
         <EntityType Name="Estada">
           <Key>
@@ -96,13 +97,14 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="ano" Type="int" Nullable="false" />
           <Property Name="idEstada" Type="int" Nullable="false" />
-          <Property Name="descricao" Type="varchar" MaxLength="1000" />
+          <Property Name="descricao" Type="varchar(max)" />
           <Property Name="nome" Type="varchar" MaxLength="100" />
           <Property Name="nif" Type="numeric" Precision="9" Scale="0" />
         </EntityType>
         <EntityType Name="HistoricoAloj">
           <Key>
             <PropertyRef Name="alojamento" />
+            <PropertyRef Name="dataInicial" />
           </Key>
           <Property Name="alojamento" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="preco" Type="money" Nullable="false" />
@@ -111,6 +113,7 @@
         <EntityType Name="HistoricoExtra">
           <Key>
             <PropertyRef Name="extra" />
+            <PropertyRef Name="dataInicial" />
           </Key>
           <Property Name="extra" Type="int" Nullable="false" />
           <Property Name="dataInicial" Type="date" Nullable="false" />
@@ -171,7 +174,31 @@
           <Property Name="area" Type="int" />
           <Property Name="tipo" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Alojament__parqu__7A280247">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Glampinho.dbo.BungalowView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BungalowView">
+          <Key>
+            <PropertyRef Name="nomeCamp" />
+            <PropertyRef Name="morada" />
+            <PropertyRef Name="estrelas" />
+            <PropertyRef Name="mail" />
+            <PropertyRef Name="nomeAloj" />
+            <PropertyRef Name="localizacao" />
+            <PropertyRef Name="descricao" />
+            <PropertyRef Name="precoBase" />
+            <PropertyRef Name="nMaxPessoas" />
+          </Key>
+          <Property Name="nomeCamp" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="morada" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estrelas" Type="int" Nullable="false" />
+          <Property Name="mail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nomeAloj" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="localizacao" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="precoBase" Type="money" Nullable="false" />
+          <Property Name="nMaxPessoas" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Alojament__parqu__41D1C7E7">
           <End Role="ParqueCampismo" Type="Self.ParqueCampismo" Multiplicity="0..1" />
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -183,7 +210,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Atividade__parqu__1F5986F6">
+        <Association Name="FK__Atividade__parqu__67034C96">
           <End Role="ParqueCampismo" Type="Self.ParqueCampismo" Multiplicity="1" />
           <End Role="Atividade" Type="Self.Atividade" Multiplicity="*" />
           <ReferentialConstraint>
@@ -195,7 +222,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bungalows__nomeA__02BD4848">
+        <Association Name="FK__Bungalows__nomeA__4A670DE8">
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="1" />
           <End Role="Bungalows" Type="Self.Bungalows" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -207,7 +234,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Estada__nIdentif__0A5E6A10">
+        <Association Name="FK__Estada__nIdentif__52082FB0">
           <End Role="Hospede" Type="Self.Hospede" Multiplicity="0..1" />
           <End Role="Estada" Type="Self.Estada" Multiplicity="*" />
           <ReferentialConstraint>
@@ -219,7 +246,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EstAlojEx__aloja__110B679F">
+        <Association Name="FK__EstAlojEx__aloja__58B52D3F">
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="1" />
           <End Role="EstAlojExtra" Type="Self.EstAlojExtra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -231,7 +258,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EstAlojEx__extra__11FF8BD8">
+        <Association Name="FK__EstAlojEx__extra__59A95178">
           <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
           <End Role="EstAlojExtra" Type="Self.EstAlojExtra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -243,7 +270,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EstAlojExtra__id__10174366">
+        <Association Name="FK__EstAlojExtra__id__57C10906">
           <End Role="Estada" Type="Self.Estada" Multiplicity="1" />
           <End Role="EstAlojExtra" Type="Self.EstAlojExtra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -255,7 +282,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ExtraAloj__id__18AC8967">
+        <Association Name="FK__ExtraAloj__id__60564F07">
           <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
           <End Role="ExtraAloj" Type="Self.ExtraAloj" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -267,7 +294,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ExtraPessoa__id__14DBF883">
+        <Association Name="FK__ExtraPessoa__id__5C85BE23">
           <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
           <End Role="ExtraPessoa" Type="Self.ExtraPessoa" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -279,7 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Fatura__idEstada__1C7D1A4B">
+        <Association Name="FK__Fatura__idEstada__6426DFEB">
           <End Role="Estada" Type="Self.Estada" Multiplicity="1" />
           <End Role="Fatura" Type="Self.Fatura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -291,9 +318,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Historico__aloja__2ACB39A2">
+        <Association Name="FK__Historico__aloja__7274FF42">
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="1" />
-          <End Role="HistoricoAloj" Type="Self.HistoricoAloj" Multiplicity="0..1" />
+          <End Role="HistoricoAloj" Type="Self.HistoricoAloj" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Alojamento">
               <PropertyRef Name="nome" />
@@ -303,9 +330,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Historico__extra__2DA7A64D">
+        <Association Name="FK__Historico__extra__75516BED">
           <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
-          <End Role="HistoricoExtra" Type="Self.HistoricoExtra" Multiplicity="0..1" />
+          <End Role="HistoricoExtra" Type="Self.HistoricoExtra" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Extra">
               <PropertyRef Name="id" />
@@ -315,7 +342,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEst__id__2235F3A1">
+        <Association Name="FK__HospEst__id__69DFB941">
           <End Role="Estada" Type="Self.Estada" Multiplicity="1" />
           <End Role="HospEst" Type="Self.HospEst" Multiplicity="*" />
           <ReferentialConstraint>
@@ -327,7 +354,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEst__nIdenti__232A17DA">
+        <Association Name="FK__HospEst__nIdenti__6AD3DD7A">
           <End Role="Hospede" Type="Self.Hospede" Multiplicity="1" />
           <End Role="HospEst" Type="Self.HospEst" Multiplicity="*" />
           <ReferentialConstraint>
@@ -339,7 +366,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEstAt__nIden__26FAA8BE">
+        <Association Name="FK__HospEstAt__nIden__6EA46E5E">
           <End Role="Hospede" Type="Self.Hospede" Multiplicity="1" />
           <End Role="HospEstAti" Type="Self.HospEstAti" Multiplicity="*" />
           <ReferentialConstraint>
@@ -351,7 +378,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEstAti__27EECCF7">
+        <Association Name="FK__HospEstAti__6F989297">
           <End Role="Atividade" Type="Self.Atividade" Multiplicity="1" />
           <End Role="HospEstAti" Type="Self.HospEstAti" Multiplicity="*" />
           <ReferentialConstraint>
@@ -365,7 +392,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HospEstAti__id__26068485">
+        <Association Name="FK__HospEstAti__id__6DB04A25">
           <End Role="Estada" Type="Self.Estada" Multiplicity="1" />
           <End Role="HospEstAti" Type="Self.HospEstAti" Multiplicity="*" />
           <ReferentialConstraint>
@@ -377,7 +404,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Telefone__parque__76577163">
+        <Association Name="FK__Telefone__parque__3E013703">
           <End Role="ParqueCampismo" Type="Self.ParqueCampismo" Multiplicity="1" />
           <End Role="Telefone" Type="Self.Telefone" Multiplicity="*" />
           <ReferentialConstraint>
@@ -389,7 +416,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tendas__nomeAloj__7EECB764">
+        <Association Name="FK__Tendas__nomeAloj__46967D04">
           <End Role="Alojamento" Type="Self.Alojamento" Multiplicity="1" />
           <End Role="Tendas" Type="Self.Tendas" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -423,7 +450,7 @@
           <Parameter Name="nIdentificacao" Type="varchar" Mode="In" />
         </Function>
         <Function Name="EnviarMailResponsaveis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="datainicio" Type="date" Mode="In" />
+          <Parameter Name="dias" Type="int" Mode="In" />
         </Function>
         <Function Name="InscreverUmHospedeNumaAtividade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nIdentificacaoHospede" Type="varchar" Mode="In" />
@@ -577,79 +604,92 @@
           <EntitySet Name="ParqueCampismo" EntityType="Self.ParqueCampismo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Telefone" EntityType="Self.Telefone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tendas" EntityType="Self.Tendas" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Alojament__parqu__7A280247" Association="Self.FK__Alojament__parqu__7A280247">
+          <EntitySet Name="BungalowView" EntityType="Self.BungalowView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BungalowView].[nomeCamp] AS [nomeCamp], 
+    [BungalowView].[morada] AS [morada], 
+    [BungalowView].[estrelas] AS [estrelas], 
+    [BungalowView].[mail] AS [mail], 
+    [BungalowView].[nomeAloj] AS [nomeAloj], 
+    [BungalowView].[localizacao] AS [localizacao], 
+    [BungalowView].[descricao] AS [descricao], 
+    [BungalowView].[precoBase] AS [precoBase], 
+    [BungalowView].[nMaxPessoas] AS [nMaxPessoas]
+    FROM [dbo].[BungalowView] AS [BungalowView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Alojament__parqu__41D1C7E7" Association="Self.FK__Alojament__parqu__41D1C7E7">
             <End Role="ParqueCampismo" EntitySet="ParqueCampismo" />
             <End Role="Alojamento" EntitySet="Alojamento" />
           </AssociationSet>
-          <AssociationSet Name="FK__Atividade__parqu__1F5986F6" Association="Self.FK__Atividade__parqu__1F5986F6">
+          <AssociationSet Name="FK__Atividade__parqu__67034C96" Association="Self.FK__Atividade__parqu__67034C96">
             <End Role="ParqueCampismo" EntitySet="ParqueCampismo" />
             <End Role="Atividade" EntitySet="Atividade" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bungalows__nomeA__02BD4848" Association="Self.FK__Bungalows__nomeA__02BD4848">
+          <AssociationSet Name="FK__Bungalows__nomeA__4A670DE8" Association="Self.FK__Bungalows__nomeA__4A670DE8">
             <End Role="Alojamento" EntitySet="Alojamento" />
             <End Role="Bungalows" EntitySet="Bungalows" />
           </AssociationSet>
-          <AssociationSet Name="FK__Estada__nIdentif__0A5E6A10" Association="Self.FK__Estada__nIdentif__0A5E6A10">
+          <AssociationSet Name="FK__Estada__nIdentif__52082FB0" Association="Self.FK__Estada__nIdentif__52082FB0">
             <End Role="Hospede" EntitySet="Hospede" />
             <End Role="Estada" EntitySet="Estada" />
           </AssociationSet>
-          <AssociationSet Name="FK__EstAlojEx__aloja__110B679F" Association="Self.FK__EstAlojEx__aloja__110B679F">
+          <AssociationSet Name="FK__EstAlojEx__aloja__58B52D3F" Association="Self.FK__EstAlojEx__aloja__58B52D3F">
             <End Role="Alojamento" EntitySet="Alojamento" />
             <End Role="EstAlojExtra" EntitySet="EstAlojExtra" />
           </AssociationSet>
-          <AssociationSet Name="FK__EstAlojEx__extra__11FF8BD8" Association="Self.FK__EstAlojEx__extra__11FF8BD8">
+          <AssociationSet Name="FK__EstAlojEx__extra__59A95178" Association="Self.FK__EstAlojEx__extra__59A95178">
             <End Role="Extra" EntitySet="Extra" />
             <End Role="EstAlojExtra" EntitySet="EstAlojExtra" />
           </AssociationSet>
-          <AssociationSet Name="FK__EstAlojExtra__id__10174366" Association="Self.FK__EstAlojExtra__id__10174366">
+          <AssociationSet Name="FK__EstAlojExtra__id__57C10906" Association="Self.FK__EstAlojExtra__id__57C10906">
             <End Role="Estada" EntitySet="Estada" />
             <End Role="EstAlojExtra" EntitySet="EstAlojExtra" />
           </AssociationSet>
-          <AssociationSet Name="FK__ExtraAloj__id__18AC8967" Association="Self.FK__ExtraAloj__id__18AC8967">
+          <AssociationSet Name="FK__ExtraAloj__id__60564F07" Association="Self.FK__ExtraAloj__id__60564F07">
             <End Role="Extra" EntitySet="Extra" />
             <End Role="ExtraAloj" EntitySet="ExtraAloj" />
           </AssociationSet>
-          <AssociationSet Name="FK__ExtraPessoa__id__14DBF883" Association="Self.FK__ExtraPessoa__id__14DBF883">
+          <AssociationSet Name="FK__ExtraPessoa__id__5C85BE23" Association="Self.FK__ExtraPessoa__id__5C85BE23">
             <End Role="Extra" EntitySet="Extra" />
             <End Role="ExtraPessoa" EntitySet="ExtraPessoa" />
           </AssociationSet>
-          <AssociationSet Name="FK__Fatura__idEstada__1C7D1A4B" Association="Self.FK__Fatura__idEstada__1C7D1A4B">
+          <AssociationSet Name="FK__Fatura__idEstada__6426DFEB" Association="Self.FK__Fatura__idEstada__6426DFEB">
             <End Role="Estada" EntitySet="Estada" />
             <End Role="Fatura" EntitySet="Fatura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Historico__aloja__2ACB39A2" Association="Self.FK__Historico__aloja__2ACB39A2">
+          <AssociationSet Name="FK__Historico__aloja__7274FF42" Association="Self.FK__Historico__aloja__7274FF42">
             <End Role="Alojamento" EntitySet="Alojamento" />
             <End Role="HistoricoAloj" EntitySet="HistoricoAloj" />
           </AssociationSet>
-          <AssociationSet Name="FK__Historico__extra__2DA7A64D" Association="Self.FK__Historico__extra__2DA7A64D">
+          <AssociationSet Name="FK__Historico__extra__75516BED" Association="Self.FK__Historico__extra__75516BED">
             <End Role="Extra" EntitySet="Extra" />
             <End Role="HistoricoExtra" EntitySet="HistoricoExtra" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEst__id__2235F3A1" Association="Self.FK__HospEst__id__2235F3A1">
+          <AssociationSet Name="FK__HospEst__id__69DFB941" Association="Self.FK__HospEst__id__69DFB941">
             <End Role="Estada" EntitySet="Estada" />
             <End Role="HospEst" EntitySet="HospEst" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEst__nIdenti__232A17DA" Association="Self.FK__HospEst__nIdenti__232A17DA">
+          <AssociationSet Name="FK__HospEst__nIdenti__6AD3DD7A" Association="Self.FK__HospEst__nIdenti__6AD3DD7A">
             <End Role="Hospede" EntitySet="Hospede" />
             <End Role="HospEst" EntitySet="HospEst" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEstAt__nIden__26FAA8BE" Association="Self.FK__HospEstAt__nIden__26FAA8BE">
+          <AssociationSet Name="FK__HospEstAt__nIden__6EA46E5E" Association="Self.FK__HospEstAt__nIden__6EA46E5E">
             <End Role="Hospede" EntitySet="Hospede" />
             <End Role="HospEstAti" EntitySet="HospEstAti" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEstAti__27EECCF7" Association="Self.FK__HospEstAti__27EECCF7">
+          <AssociationSet Name="FK__HospEstAti__6F989297" Association="Self.FK__HospEstAti__6F989297">
             <End Role="Atividade" EntitySet="Atividade" />
             <End Role="HospEstAti" EntitySet="HospEstAti" />
           </AssociationSet>
-          <AssociationSet Name="FK__HospEstAti__id__26068485" Association="Self.FK__HospEstAti__id__26068485">
+          <AssociationSet Name="FK__HospEstAti__id__6DB04A25" Association="Self.FK__HospEstAti__id__6DB04A25">
             <End Role="Estada" EntitySet="Estada" />
             <End Role="HospEstAti" EntitySet="HospEstAti" />
           </AssociationSet>
-          <AssociationSet Name="FK__Telefone__parque__76577163" Association="Self.FK__Telefone__parque__76577163">
+          <AssociationSet Name="FK__Telefone__parque__3E013703" Association="Self.FK__Telefone__parque__3E013703">
             <End Role="ParqueCampismo" EntitySet="ParqueCampismo" />
             <End Role="Telefone" EntitySet="Telefone" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tendas__nomeAloj__7EECB764" Association="Self.FK__Tendas__nomeAloj__7EECB764">
+          <AssociationSet Name="FK__Tendas__nomeAloj__46967D04" Association="Self.FK__Tendas__nomeAloj__46967D04">
             <End Role="Alojamento" EntitySet="Alojamento" />
             <End Role="Tendas" EntitySet="Tendas" />
           </AssociationSet>
@@ -710,7 +750,7 @@
           </Key>
           <Property Name="nif" Type="Int32" Nullable="false" />
           <Property Name="email1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="texto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="texto" Type="String" MaxLength="600" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Estada">
           <Key>
@@ -776,7 +816,7 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="ano" Type="Int32" Nullable="false" />
           <Property Name="idEstada" Type="Int32" Nullable="false" />
-          <Property Name="descricao" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="nif" Type="Decimal" Precision="9" Scale="0" />
           <NavigationProperty Name="Estada" Relationship="Self.FK__Fatura__idEstada__5C6CB6D7" FromRole="Fatura" ToRole="Estada" />
@@ -1295,12 +1335,13 @@
             <Parameter Name="Id_Factura" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EnviarMailResponsaveis1" ReturnType="Collection(GlampinhoModel.EnviarMailResponsaveis1_Result)">
-          <Parameter Name="datainicio" Mode="In" Type="DateTime" />
+          <Parameter Name="dias" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SendMail1">
             <Parameter Name="nif" Mode="In" Type="Int32" />
             <Parameter Name="texto" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="BungalowView" EntityType="GlampinhoModel.BungalowView" />
         </EntityContainer>
         <ComplexType Name="EnviarMailResponsaveis_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1346,6 +1387,28 @@
           <Property Type="String" Name="mail" Nullable="false" MaxLength="100" />
           <Property Type="Decimal" Name="nif" Nullable="false" Precision="9" Scale="0" />
         </ComplexType>
+        <EntityType Name="BungalowView">
+          <Key>
+            <PropertyRef Name="nomeCamp" />
+            <PropertyRef Name="morada" />
+            <PropertyRef Name="estrelas" />
+            <PropertyRef Name="mail" />
+            <PropertyRef Name="nomeAloj" />
+            <PropertyRef Name="localizacao" />
+            <PropertyRef Name="descricao" />
+            <PropertyRef Name="precoBase" />
+            <PropertyRef Name="nMaxPessoas" />
+          </Key>
+          <Property Name="nomeCamp" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="morada" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estrelas" Type="Int32" Nullable="false" />
+          <Property Name="mail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nomeAloj" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="localizacao" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="precoBase" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="nMaxPessoas" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1602,6 +1665,21 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SendMail1" FunctionName="GlampinhoModel.Store.SendMail" />
+          <EntitySetMapping Name="BungalowView">
+            <EntityTypeMapping TypeName="GlampinhoModel.BungalowView">
+              <MappingFragment StoreEntitySet="BungalowView">
+                <ScalarProperty Name="nMaxPessoas" ColumnName="nMaxPessoas" />
+                <ScalarProperty Name="precoBase" ColumnName="precoBase" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="localizacao" ColumnName="localizacao" />
+                <ScalarProperty Name="nomeAloj" ColumnName="nomeAloj" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="estrelas" ColumnName="estrelas" />
+                <ScalarProperty Name="morada" ColumnName="morada" />
+                <ScalarProperty Name="nomeCamp" ColumnName="nomeCamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
